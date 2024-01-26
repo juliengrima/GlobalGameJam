@@ -12,6 +12,45 @@ using UnityEngine.SceneManagement;
 public class PlayerStateMachine : MonoBehaviour
 {
     #region Champs
+    [SerializeField] InputActionReference _move;
+    [SerializeField] InputActionReference _run;
+    [SerializeField] InputActionReference _jump;
+    [SerializeField] InputActionReference _crouch;
+    [SerializeField] InputActionReference _look;
+
+    [Header("Player_Camera_component")]
+    //[SerializeField] AttachedCameras _cameras;
+    [Header("Player_Actions_Components")]
+    //[SerializeField] EntityMove _entityMove;
+    //[SerializeField] PlayGame _playGame;
+    //[SerializeField] HealthCount _health;
+    //[SerializeField] EntityJump _entityJump;
+    //[SerializeField] EntityCrouch _entityCrouch;
+    //[SerializeField] EntityLook _entityLook;
+
+    [Header("Player_interactions_Components")]
+    //[SerializeField] Grounded _Grounded;
+    //[SerializeField] Interaction _interaction;
+    [Header("Player_Animations")]
+    [SerializeField] Animator _animator;
+    [SerializeField] Animation _animation;
+    [Header("Player_Audios")]
+    [SerializeField] AudioSource _source;
+    [Header("Informations_fields")]
+    [SerializeField] float _fallWait;
+    [SerializeField] float _destroyDisableDuration;
+    [SerializeField] float _loadingSceneDuration;
+    [Header("Events_Components")]
+    [SerializeField] UnityEvent _explosion1;
+    [SerializeField] UnityEvent _explosion2;
+    [SerializeField] UnityEvent _explosion3;
+    //Private Fields
+    bool _death;
+    Vector2 _dir;
+    //Private Components
+    Coroutine _fallCoroutine;
+    Coroutine _startCoroutine;
+
     PlayerState _currentState;
     #endregion
     #region Enumerator
