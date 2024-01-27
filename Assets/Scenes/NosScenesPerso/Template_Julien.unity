@@ -3193,9 +3193,19 @@ PrefabInstance:
       objectReference: {fileID: 1020185048}
     - target: {fileID: 4683729569524586756, guid: 197f8a9ce6be9412d9ae278e2f60b064,
         type: 3}
+      propertyPath: _speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683729569524586756, guid: 197f8a9ce6be9412d9ae278e2f60b064,
+        type: 3}
       propertyPath: _coroutines
       value: 
       objectReference: {fileID: 964986794}
+    - target: {fileID: 4683729569524586756, guid: 197f8a9ce6be9412d9ae278e2f60b064,
+        type: 3}
+      propertyPath: _rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5161519147344656285, guid: 197f8a9ce6be9412d9ae278e2f60b064,
         type: 3}
       propertyPath: m_Mesh

@@ -7,7 +7,8 @@ public class EntityMove : MonoBehaviour
 {
     #region Champs
     [Header("Character_Components")]
-    [SerializeField] CharacterController _controller;
+    //[SerializeField] CharacterController _controller;
+    [SerializeField] Rigidbody _rb;
     [SerializeField] PlayerStateMachine _playerStateMachine;
     [SerializeField] Grounded _grounded;
     //[SerializeField] HealthCount _health;
@@ -37,7 +38,7 @@ public class EntityMove : MonoBehaviour
    
 
     public AudioSource Source { get => _source; set => _source = value; }
-    public CharacterController Controller { get => _controller; set => _controller = value; }
+    //public CharacterController Controller { get => _controller; set => _controller = value; }
     public Vector3 Direction { get => _direction; set => _direction = value; }
     public float Rotation { get => _rotation; set => _rotation = value; }
     public float RotationSpeed { get => _rotationSpeed; set => _rotationSpeed = value; }
@@ -49,12 +50,28 @@ public class EntityMove : MonoBehaviour
     // Start is called before the first frame update
     private void Reset()
     {
-        _controller = transform.parent.GetComponentInChildren<CharacterController>();
+        _rb = transform.parent.GetComponentInChildren<Rigidbody>();
+        //_controller = transform.parent.GetComponentInChildren<CharacterController>();
 
         _gravity = -9.81f;
         _speed = 1.5f;
         _jumpHeight = 1f;
         //_jumpDamage = 1;
+    }
+
+    public static EntityMove Instance
+    {
+        get; private set;
+    }
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("OMG");
+        }
+
+        Instance = this;
     }
 
     void Update()
@@ -91,9 +108,17 @@ public class EntityMove : MonoBehaviour
             var forward = moving.y;
 
             float step = RotationSpeed * Time.deltaTime;
+            //_rb.transform.Rotate(0f, moving.x * step, 0f);
 
-            _controller.transform.Rotate(0f, moving.x * step, 0f);
-            _controller.Move(_controller.transform.forward * _speed * Time.deltaTime * forward);
+            var dir = moving * _speed * Time.deltaTime;
+            _rb.transform.Rotate(0f, moving.x * step, 0f);
+            _direction = new Vector3(dir.x, _rb.velocity.z, dir.y);
+            //_rb.velocity = moving * _speed;
+            _rb.velocity =  _direction * forward;
+            Debug.Log($"Velocite rb : {_rb.velocity}");
+
+            //_controller.transform.Rotate(0f, moving.x * step, 0f);
+            //_controller.Move(_controller.transform.forward * _speed * Time.deltaTime * forward);
         }
     }
 
