@@ -8,8 +8,8 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-namespace Manager
-{
+/*namespace Manager
+{*/
     public class CoroutinesList : MonoBehaviour
     {
         #region Coroutines
@@ -48,5 +48,5 @@ namespace Manager
         }
         #endregion
     }
-}
+/*}*/
 
