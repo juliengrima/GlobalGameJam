@@ -13,6 +13,7 @@ public class EventManager : MonoBehaviour
     private TMP_Text _title, _description;
 
     public bool AreKeysInverted { private set; get; }
+    public float TimeMultiplier { private set; get; } = 1f;
 
     private void Awake()
     {
@@ -20,7 +21,8 @@ public class EventManager : MonoBehaviour
 
         Events = new[]
         {
-            new EventInfo("Confusion", "All controls are inverted", () => { AreKeysInverted = true; }, () => { AreKeysInverted = false; })
+            new EventInfo("Confusion", "All controls are inverted", () => { AreKeysInverted = true; }, () => { AreKeysInverted = false; }),
+            new EventInfo("Frenzy Times", "Increase everything speed", () => { TimeMultiplier = 3f; }, () => { TimeMultiplier = 1f; })
         };
 
         StartCoroutine(RunEvents());
