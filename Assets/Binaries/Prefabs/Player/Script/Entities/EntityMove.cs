@@ -61,7 +61,6 @@ public class EntityMove : MonoBehaviour
     {
         //IsGrounded();
         Moving(_direction);
-        Jump(_playerStateMachine.Jump);
         //Fall();
     }
     #endregion
