@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class EntityMove : MonoBehaviour
 {
     #region Champs
+    [SerializeField] private PlayerInfo _info;
     [Header("Character_Components")]
     [SerializeField] CharacterController _controller;
     [SerializeField] PlayerStateMachine _playerStateMachine;
@@ -17,10 +18,8 @@ public class EntityMove : MonoBehaviour
     [Header("coroutines_Component")]
     [SerializeField] CoroutinesList _coroutines;
     [Header("Fieds")]
-    [SerializeField] float _speed;
     [SerializeField] float _jumpHeight;
     [SerializeField] float _rotation;
-    [SerializeField] float _rotationSpeed;
     [SerializeField] float _smoothTime;
     //[SerializeField] int _jumpDamage;
     [SerializeField, Range(0, -11)] float _gravity;
@@ -34,16 +33,6 @@ public class EntityMove : MonoBehaviour
 
     private Vector2 _targetRotation;
 
-   
-
-    public AudioSource Source { get => _source; set => _source = value; }
-    public CharacterController Controller { get => _controller; set => _controller = value; }
-    public Vector3 Direction { get => _direction; set => _direction = value; }
-    public float Rotation { get => _rotation; set => _rotation = value; }
-    public float RotationSpeed { get => _rotationSpeed; set => _rotationSpeed = value; }
-    public float SmoothTime { get => _smoothTime; set => _smoothTime = value; }
-    public float Gravity { get => _gravity; set => _gravity = value; }
-    public float CurrentVelocity { get => _currentVelocity; set => _currentVelocity = value; }
     #endregion
     #region Unity LifeCycle
     // Start is called before the first frame update
@@ -52,7 +41,6 @@ public class EntityMove : MonoBehaviour
         _controller = transform.parent.GetComponentInChildren<CharacterController>();
 
         _gravity = -9.81f;
-        _speed = 1.5f;
         _jumpHeight = 1f;
         //_jumpDamage = 1;
     }
@@ -89,10 +77,10 @@ public class EntityMove : MonoBehaviour
         {
             var forward = moving.y;
 
-            float step = RotationSpeed * Time.deltaTime;
+            float step = _info.RotationSpeed * Time.deltaTime;
 
             _controller.transform.Rotate(0f, moving.x * step, 0f);
-            _controller.Move(_controller.transform.forward * _speed * Time.deltaTime * forward);
+            _controller.Move(_controller.transform.forward * _info.LinearSpeed * Time.deltaTime * forward);
         }
     }
 

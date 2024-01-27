@@ -539,15 +539,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94eacc1ef402448778139925b5269c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _info: {fileID: 11400000, guid: 52815df20664e054c8602ef000200d5d, type: 2}
   _controller: {fileID: 5316977934643343908}
   _playerStateMachine: {fileID: 1034880950507596605}
   _grounded: {fileID: 4770433742942684060}
   _source: {fileID: 0}
   _coroutines: {fileID: 0}
-  _speed: 1.5
   _jumpHeight: 1
   _rotation: 1
-  _rotationSpeed: 50
   _smoothTime: 0.05
   _gravity: -9.81
 --- !u!114 &2350426417696592542
