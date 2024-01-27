@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { private set; get; }
+
     public Action onGameBegin;
 
     public TextMeshProUGUI countdownText;
@@ -13,9 +15,13 @@ public class UIManager : MonoBehaviour
     private float timer;
     private bool isTimerActive;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
-        StartCoroutine(StartCountdown());
         timer = GameManager.Instance.GameInfo.GameDuration;
     }
 
@@ -28,7 +34,7 @@ public class UIManager : MonoBehaviour
     }
 
     #region Countdown
-    IEnumerator StartCountdown()
+    public IEnumerator StartCountdown()
     {
         int countdownTime = GameManager.Instance.GameInfo.CountdownDuration;
 
