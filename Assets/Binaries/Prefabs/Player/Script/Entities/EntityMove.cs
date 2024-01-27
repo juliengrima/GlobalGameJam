@@ -15,8 +15,6 @@ public class EntityMove : MonoBehaviour
     //[SerializeField] EnduanceWheel _stamina;
     [Header("Audio_Component")]
     [SerializeField] AudioSource _source;
-    [Header("coroutines_Component")]
-    [SerializeField] CoroutinesList _coroutines;
     [Header("Fieds")]
     [SerializeField] float _jumpHeight;
     [SerializeField] float _rotation;
