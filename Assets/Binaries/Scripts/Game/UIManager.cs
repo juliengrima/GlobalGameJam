@@ -15,17 +15,12 @@ public class UIManager : MonoBehaviour
     public float timer;
     private bool isTimerActive;
 
-    private void Awake()
-    {
-        
-    }
-
     void Start()
     {
         StartCoroutine(StartCountdown());
     }
 
-    private void Update ()
+    private void Update()
     {
         UpdateTimer();
     }
