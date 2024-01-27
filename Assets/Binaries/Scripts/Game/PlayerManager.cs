@@ -30,6 +30,8 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    public string GetMatName(int index) => _materials[index].name;
+
     public int Register(GameObject player)
     {
         var index = _players.Count > 3 ? 3 : _players.Count;
