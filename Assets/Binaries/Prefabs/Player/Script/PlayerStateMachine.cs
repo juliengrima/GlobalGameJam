@@ -25,7 +25,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void OnItemTrigger(GameObject go)
     {
-        Eat();
+        if (go.CompareTag(""))
+        {
+            Eat();
+        }
+
     }
 
     public void Eat()

@@ -3,8 +3,7 @@ using UnityEngine.Events;
 
 public class ColliderReceptor : MonoBehaviour
 {
-    [SerializeField]
-    private UnityEvent<GameObject> _onItemTrigger = new();
+    [SerializeField] private UnityEvent<GameObject> _onItemTrigger = new();
 
     public void InvokeItemTrigger(GameObject other)
     {
