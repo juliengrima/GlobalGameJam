@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
 
     internal void UpdatePlayerInfo(int _id)
     {
+        PlayerManager.Instance.ResetPlayerPosition();
         playerInfos[_id].AddScore();
     }
     #endregion
@@ -70,11 +71,10 @@ public class UIManager : MonoBehaviour
 
         // Display something when the countdown is complete
         countdownText.text = "Go!";
-
+                
+        yield return new WaitForSeconds(1f);
         GameManager.Instance.CanPlay = true;
         OnTimerBegin();
-        
-        yield return new WaitForSeconds(1f);
         
         // Optionally, hide or disable the countdown text after the countdown is complete
         countdownText.enabled = false;
