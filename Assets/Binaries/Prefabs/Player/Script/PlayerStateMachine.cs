@@ -179,7 +179,7 @@ public class PlayerStateMachine : MonoBehaviour
                 //}
                 
                 //Fire will come
-                _entityMove.Moving(_dir);
+                //_entityMove.Moving(_dir);
                 break;
             case PlayerState.WALK: // State Start to move and make interactions
                 //_animator.SetFloat("ISMOVING", _dir.x);
@@ -201,7 +201,7 @@ public class PlayerStateMachine : MonoBehaviour
                 //    TransitionToState(PlayerState.CROUCH);
                 //}
 
-                //_entityMove.Moving(_dir);
+                _entityMove.Moving(_dir);
                 //_interactions.Interations();
                 //Fire will come
                 break;

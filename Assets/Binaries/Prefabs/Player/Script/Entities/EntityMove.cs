@@ -25,20 +25,33 @@ public class EntityMove : MonoBehaviour
     [Header("Fieds")]
     [SerializeField] float _speed;
     [SerializeField] float _jumpHeight;
+    [SerializeField] float _rotation;
+    [SerializeField] float _rotationSpeed;
+    [SerializeField] float _rotationThreshold;
+    [SerializeField] float _smoothTime;
     //[SerializeField] int _jumpDamage;
     [SerializeField, Range(0, -11)] float _gravity;
     //Privates Components
     Vector3 playerVelocity;
     Vector3 _direction;
-    Vector2 _oldDirection;
-    Coroutine _walkCoroutine;
+    Coroutine _rotationCoroutine;
     //Privates Fields
-    bool _isRunning;
     bool _IsJumping;
     bool groundedPlayer;
+    float _currentVelocity;
+    float _angle;
+    float _targetAngle;
+   
 
-    public float Gravity { get => _gravity; set => _gravity = value; }
     public AudioSource Source { get => _source; set => _source = value; }
+    public CharacterController Controller { get => _controller; set => _controller = value; }
+    public Vector3 Direction { get => _direction; set => _direction = value; }
+    public float Rotation { get => _rotation; set => _rotation = value; }
+    public float RotationSpeed { get => _rotationSpeed; set => _rotationSpeed = value; }
+    public float SmoothTime { get => _smoothTime; set => _smoothTime = value; }
+    public float Gravity { get => _gravity; set => _gravity = value; }
+    public float CurrentVelocity { get => _currentVelocity; set => _currentVelocity = value; }
+    public float Angle { get => _angle; set => _angle = value; }
     #endregion
     #region Unity LifeCycle
     // Start is called before the first frame update
@@ -70,16 +83,31 @@ public class EntityMove : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        _controller.Move(move * Time.deltaTime * _speed);
+        _direction = moving;
 
-        if (move != Vector3.zero)
+        if (_direction.sqrMagnitude == 0) return; 
+        _targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
+        _angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetAngle, ref _currentVelocity, _smoothTime);
+        Quaternion rotateController = _controller.transform.rotation = Quaternion.Euler(0, _angle, 0);
+        //_rotationCoroutine = StartCoroutine(_coroutines.MoveCoroutine(this));
+
+        if (Quaternion.Angle(transform.rotation, rotateController) < _rotationThreshold)
         {
-            gameObject.transform.forward = move;
+            // Si la rotation est terminée, permettre au personnage d'avancer
+            //_controller.Move(transform.forward * _speed * Time.deltaTime);
+
+            //CharacterController Movements
+            Vector3 move = new Vector3(_direction.x, 0, _direction.y);
+            _controller.Move(move * Time.deltaTime * _speed);
+
+            if (move != Vector3.zero)
+            {
+                gameObject.transform.forward = move;
+            }
         }
 
         // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        if (_IsJumping && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.0f * _gravity);
         }
@@ -88,39 +116,10 @@ public class EntityMove : MonoBehaviour
         _controller.Move(playerVelocity * Time.deltaTime);
     }
 
-
-    public void Run(InputActionReference run)
-    {
-        _isRunning = run.action.IsPressed();
-    }
     public void Jump(InputActionReference _jump)
     {
         _IsJumping = _jump.action.WasPerformedThisFrame();
     }
-
-    // 
-    //private void Fall()
-    //{
-    //    var fall = playerVelocity.y += _controller.velocity.y * -3.0f * _gravity;
-
-    //    if (fall > 1f && groundedPlayer)
-    //    {
-    //        int jumpDamage = Convert.ToInt32(fall) * _jumpDamage;
-    //        _health.TakeDamage(jumpDamage);
-    //    }
-    //}
-
-    //void IsGrounded()
-    //{
-    //    //groundedPlayer = _controller.isGrounded;
-    //    groundedPlayer = _grounded.IsGrounded;
-    //    if (groundedPlayer)
-    //    {
-    //        playerVelocity.y = 0f;
-    //    }
-    //    // Update gravity
-    //    playerVelocity.y += _gravity * Time.deltaTime;
-    //}
     #endregion
     #region Coroutines
     #endregion 
