@@ -26,7 +26,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         timer = GameManager.Instance.GameInfo.GameDuration;
-        Invoke("StartCountDown", 10f); // For Test Only
     }
 
     private void Update()
@@ -47,12 +46,15 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Countdown
-
+    public void StartCountDown()
+    {
+        StartCoroutine(Countdown());
+        onGameBegin?.Invoke();
+    }
   
-    public IEnumerator StartCountdown()
+    IEnumerator Countdown()
     {
         int countdownTime = GameManager.Instance.GameInfo.CountdownDuration;
-        onGameBegin?.Invoke();
 
         while (countdownTime > 0)
         {
@@ -64,11 +66,11 @@ public class UIManager : MonoBehaviour
         // Display something when the countdown is complete
         countdownText.text = "Go!";
 
-        yield return new WaitForSeconds(1f);
-        
         GameManager.Instance.CanPlay = true;
         OnTimerBegin();
-
+        
+        yield return new WaitForSeconds(1f);
+        
         // Optionally, hide or disable the countdown text after the countdown is complete
         countdownText.enabled = false;
     }
@@ -116,6 +118,11 @@ public class UIManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeInSeconds / 60);
         int seconds = Mathf.FloorToInt(timeInSeconds % 60);
         return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    internal void UpdatePlayerInfo()
+    {
+        throw new NotImplementedException();
     }
     #endregion
 }

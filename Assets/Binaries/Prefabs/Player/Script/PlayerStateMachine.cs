@@ -30,6 +30,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Eat()
     {
+        UIManager.Instance.UpdatePlayerInfo();
+
+
         // Call UI to remove health
         var isAlive = true;
         if (!isAlive)
