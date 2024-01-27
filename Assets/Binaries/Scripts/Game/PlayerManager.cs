@@ -35,5 +35,11 @@ public class PlayerManager : MonoBehaviour
         player.transform.rotation = _spawnPoints[index].rotation;
         player.GetComponentInChildren<PlayerRenderer>().SetMat(_materials[index]);
         _players.Add(player);
+        UIManager.Instance.DisplayPlayerInfo(_players.Count, _materials[index].name);
+    }
+
+    public int GetPlayerCount()
+    {
+        return _players.Count;
     }
 }

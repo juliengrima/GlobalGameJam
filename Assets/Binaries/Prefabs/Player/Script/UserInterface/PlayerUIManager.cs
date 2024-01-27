@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class PlayerUIManager : MonoBehaviour
 {
     [SerializeField]
     private Transform _pointContainer;
+    public TextMeshProUGUI _playerIDText;
 
     [SerializeField]
     private GameObject _pointPrefab;
