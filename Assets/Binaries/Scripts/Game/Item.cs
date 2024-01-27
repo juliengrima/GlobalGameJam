@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log(other.name);
             other.GetComponent<ColliderReceptor>().InvokeItemTrigger(other.gameObject);
             Destroy(gameObject);
         }
