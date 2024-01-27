@@ -40,12 +40,13 @@ public class UIManager : MonoBehaviour
     
     public void DisplayPlayerInfo(int count, string playerID)
     {
-        playerInfos[count - 1]._playerIDText.text = "Player " +  playerID; 
+        playerInfos[count - 1]._playerIDText.text = "Player " +  playerID;
+        playerInfos[count - 1].gameObject.SetActive(true);
     }
 
     internal void UpdatePlayerInfo(int _id)
     {
-        playerInfos[_id].gameObject.SetActive(true);
+        playerInfos[_id].AddScore();
     }
     #endregion
 
