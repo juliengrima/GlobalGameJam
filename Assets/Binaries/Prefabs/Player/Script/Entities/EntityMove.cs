@@ -1,12 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 
 public class EntityMove : MonoBehaviour
@@ -26,7 +20,7 @@ public class EntityMove : MonoBehaviour
     [SerializeField] float _speed;
     [SerializeField] float _jumpHeight;
     [SerializeField] float _rotation;
-    [SerializeField, Range(1, 5)] float _rotationSpeed;
+    [SerializeField] float _rotationSpeed;
     [SerializeField] float _smoothTime;
     //[SerializeField] int _jumpDamage;
     [SerializeField, Range(0, -11)] float _gravity;
@@ -37,6 +31,8 @@ public class EntityMove : MonoBehaviour
     bool _IsJumping;
     bool groundedPlayer;
     float _currentVelocity;
+
+    private Vector2 _targetRotation;
 
    
 
@@ -73,31 +69,12 @@ public class EntityMove : MonoBehaviour
     // Moving method
     public void Moving(Vector2 moving)
     {
+        // Jump stuff, enable back if relevant
+        /*
         groundedPlayer = _controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
-        }
-
-        _direction = moving;
-
-        if (_direction.sqrMagnitude == 0) return;
-        var targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
-        var angle = Mathf.SmoothDampAngle(_controller.transform.eulerAngles.y, targetAngle, ref _currentVelocity, _smoothTime);
-
-       if (_playerStateMachine.Move.action.IsPressed())
-        {
-
-        }
-
-        _controller.transform.rotation = Quaternion.Euler(0, angle, 0);
-
-        Vector3 move = new Vector3(_direction.x, 0, _direction.y);
-        _controller.Move(move * Time.deltaTime * _speed);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
         }
 
         // Changes the height position of the player..
@@ -107,7 +84,17 @@ public class EntityMove : MonoBehaviour
         }
 
         playerVelocity.y += _gravity * Time.deltaTime;
-        _controller.Move(playerVelocity * Time.deltaTime);
+        */
+
+        if (moving.magnitude != 0f)
+        {
+            var forward = moving.y;
+
+            float step = RotationSpeed * Time.deltaTime;
+
+            _controller.transform.Rotate(0f, moving.x * step, 0f);
+            _controller.Move(_controller.transform.forward * _speed * Time.deltaTime * forward);
+        }
     }
 
     public void Jump(InputActionReference _jump)

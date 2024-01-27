@@ -1,4 +1,0 @@
-repository "GlobalGameJam@decide1983@cloud"
-  path "/"
-    br "/main"
-    co "/main"

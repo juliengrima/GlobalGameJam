@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e161ff4e5d9432abc454afbc91389d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _move: {fileID: -1721896645001529347, guid: 48a1191fe04f844468e2f84c9f729b53, type: 3}
-  _eat: {fileID: -8192538655843152715, guid: 48a1191fe04f844468e2f84c9f729b53, type: 3}
-  _jump: {fileID: 5157636576279781112, guid: 48a1191fe04f844468e2f84c9f729b53, type: 3}
+  _move: {fileID: 5453523788486162453, guid: 3aa9fca23113bf94e8832fbc6e77fda0, type: 3}
+  _eat: {fileID: -4680412394359452735, guid: 3aa9fca23113bf94e8832fbc6e77fda0, type: 3}
+  _jump: {fileID: 7206302649219198392, guid: 3aa9fca23113bf94e8832fbc6e77fda0, type: 3}
   _entityMove: {fileID: 4683729569524586756}
   _entityFire: {fileID: 2350426417696592542}
   _Grounded: {fileID: 4770433742942684060}
@@ -203,7 +203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5279941806694501375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.960743, y: -3.5050955, z: 7.553461}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 48a1191fe04f844468e2f84c9f729b53,
+  m_Actions: {fileID: -944628639613478452, guid: 3aa9fca23113bf94e8832fbc6e77fda0,
     type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Game
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &5397203964738311985
@@ -485,7 +485,7 @@ MonoBehaviour:
   _speed: 1.5
   _jumpHeight: 1
   _rotation: 1
-  _rotationSpeed: 1
+  _rotationSpeed: 50
   _smoothTime: 0.05
   _gravity: -9.81
 --- !u!114 &2350426417696592542
@@ -617,7 +617,7 @@ PrefabInstance:
     - target: {fileID: 3806804261012147802, guid: 3c5bb77bdea5f44a592b15a42ccfc210,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2437
+      value: 2440
       objectReference: {fileID: 0}
     - target: {fileID: 4368704918504249146, guid: 3c5bb77bdea5f44a592b15a42ccfc210,
         type: 3}
