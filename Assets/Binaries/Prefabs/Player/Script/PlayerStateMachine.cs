@@ -1,39 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-
+//using UnityEngine.Rendering.HighDefinition;
 
 public class PlayerStateMachine : MonoBehaviour
 {
     #region Champs
-    [SerializeField] InputActionReference _move;
-    [SerializeField] InputActionReference _run;
-    [SerializeField] InputActionReference _jump;
-    [SerializeField] InputActionReference _crouch;
-    [SerializeField] InputActionReference _look;
-
-    [Header("Player_Camera_component")]
-    //[SerializeField] AttachedCameras _cameras;
+    [SerializeField] private GameObject _mainParent;
     [Header("Player_Actions_Components")]
-    //[SerializeField] EntityMove _entityMove;
-    //[SerializeField] PlayGame _playGame;
-    //[SerializeField] HealthCount _health;
-    //[SerializeField] EntityJump _entityJump;
-    //[SerializeField] EntityCrouch _entityCrouch;
-    //[SerializeField] EntityLook _entityLook;
-
+    [SerializeField] EntityMove _entityMove;
+    [SerializeField] EntityFire _entityFire; //EAT
     [Header("Player_interactions_Components")]
-    //[SerializeField] Grounded _Grounded;
+    [SerializeField] Grounded _Grounded;
     //[SerializeField] Interaction _interaction;
     [Header("Player_Animations")]
     [SerializeField] Animator _animator;
-    [SerializeField] Animation _animation;
+    //[SerializeField] Animation _animation;
     [Header("Player_Audios")]
     [SerializeField] AudioSource _source;
     [Header("Informations_fields")]
@@ -50,144 +32,54 @@ public class PlayerStateMachine : MonoBehaviour
     //Private Components
     Coroutine _fallCoroutine;
     Coroutine _startCoroutine;
+    //Public informations
+    public float FallWait { get => _fallWait; }
+    public float DestroyDisableDuration { get => _destroyDisableDuration; }
+    public float LoadingSceneDuration { get => _loadingSceneDuration; }
+    public bool Death { get => _death; set => _death = value; }
+    //public InputActionReference Look { get => _look; set => _look = value; }
+    //public PlayGame PlayGame { get => _playGame; set => _playGame = value; }
+    public Vector2 Dir { get => _dir; set => _dir = value; }
+    public Animator Animator { get => _animator; set => _animator = value; }
+    //public HealthCount Health { get => _health; set => _health = value; }
+    public UnityEvent Explosion1 { get => _explosion1; set => _explosion1 = value; }
+    public UnityEvent Explosion2 { get => _explosion2; set => _explosion2 = value; }
+    public UnityEvent Explosion3 { get => _explosion3; set => _explosion3 = value; }
+    public AudioSource Source { get => _source; set => _source = value; }
 
-    PlayerState _currentState;
+    //public Animation Animation { get => _animation; set => _animation = value; }
+
+    //public InputActionReference Pause { get => _pause; }
+
     #endregion
-    #region Enumerator
-    public enum PlayerState
+    #region BeforeStart
+    private void Start()
     {
-        State1,
-        State2,
-        State3,
-        State4,
-        State5,
-        State6,
-        State7
-    }
-    #endregion
-    #region Default Informations
-    void Reset()
-    {
-        
-    }
-    #endregion
-    #region Unity LifeCycle
-    // Start is called before the first frame update
-    
-    void Awake()
-    {
-        
-    }
-    void Start()
-    {
-        
+        PlayerManager.Instance.Register(_mainParent);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Reset()
     {
-        
-    }
-    #endregion
-    #region Methods
-    void FixedUpdate()
-    {
-        
-    }
-    void LateUpdate()
-    {
-        
-    }
-    #endregion
-    #region StatesMachine
-    void OnStateEnter()
-    {
-        switch (_currentState)
-        {
-            case PlayerState.State1:
-               
-                break;
-            case PlayerState.State2:
-                break;
-            case PlayerState.State3:
-                break;
-            case PlayerState.State4:
-               
-                break;
-            case PlayerState.State5:
-               
-                break;
-            case PlayerState.State6:
-               
-                break;
-            case PlayerState.State7:
-                
-                break;
-            default:
-                break;
-        }
-    }
-    void OnStateUpdate()
-    {
-        switch (_currentState)
-        {
-            case PlayerState.State1: //Base statement 
-                break;
-            case PlayerState.State2: // State Start to move and make interactions
-                break;
-            case PlayerState.State3:
-                break;
-            case PlayerState.State4:
-                break;
-            case PlayerState.State6:    
-                break;
-            case PlayerState.State7:
+        // Call components when LevelDesigner take it to the Hierarchy
+        _entityMove = transform.parent.GetComponentInChildren<EntityMove>();
+        _Grounded = transform.parent.GetComponentInChildren<Grounded>();
+        _animator = transform.parent.GetComponentInChildren<Animator>();
 
-                break;
-            default:
-                break;
-        }
+        //All informations datas at start
+        _fallWait = 3f;
+        _destroyDisableDuration = 5f;
+        _loadingSceneDuration = 5f;
+        _death = false;
+    }
+    #endregion
+
+    public void OnMove(InputAction.CallbackContext value)
+    {
+        _dir = value.ReadValue<Vector2>().normalized;
     }
 
-    void OnStateExit()
+    private void Update()
     {
-        switch (_currentState)
-        {
-            case PlayerState.State1:
-              
-                break;
-            case PlayerState.State2:
-               
-                break;
-            case PlayerState.State3:
-                
-                break;
-            case PlayerState.State4:
-                break;
-            case PlayerState.State5:
-                
-                break;
-            case PlayerState.State6:
-               
-                break;
-            case PlayerState.State7:
-
-                break;
-            default:
-                break;
-        }
+        _entityMove.Moving(_dir);
     }
-    public void TransitionToState(PlayerState nextState)
-    {
-        OnStateExit();
-        _currentState = nextState;
-        OnStateEnter();
-    }
-    #endregion
-    #region Coroutines
-	IEnumerator EndCoroutine()
-    {
-        throw new NotImplementedException();   
-    }
-    #endregion
 }
