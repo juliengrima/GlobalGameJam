@@ -45,5 +45,6 @@ public class PlayerManager : MonoBehaviour
         }
 
         return index;
+        UIManager.Instance.DisplayPlayerInfo(_players.Count, _materials[index].name);
     }
 }

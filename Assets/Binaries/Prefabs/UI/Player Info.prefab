@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pointContainer: {fileID: 5233823643241322831}
+  _playerIDText: {fileID: 3208965807918660856}
   _pointPrefab: {fileID: 6916696197178354095, guid: 3e1b04fa674ee4243bea2eefed7f8502,
     type: 3}
 --- !u!1 &8313617459240843281

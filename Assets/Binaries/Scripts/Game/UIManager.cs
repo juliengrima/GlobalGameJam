@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,10 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { private set; get; }
 
     public Action onGameBegin;
+    public static UIManager Instance;
+
+    public List<PlayerUIManager> playerInfos = new List<PlayerUIManager>();
+
 
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
@@ -23,6 +28,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         timer = GameManager.Instance.GameInfo.GameDuration;
+        Invoke("StartCountDown", 10f); // For Test Only
     }
 
     private void Update()
@@ -33,8 +39,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    #region Player Infos Management
+    
+    public void DisplayPlayerInfo(int count, string playerID)
+    {
+        playerInfos[count - 1]._playerIDText.text = "Player " +  playerID; 
+        playerInfos[count - 1].gameObject.SetActive(true);
+    }
+    #endregion
+
     #region Countdown
-    public IEnumerator StartCountdown()
+
+    public void StartCountDown()
+    {
+        StartCoroutine(StartCountdown());
+        onGameStart?.Invoke();
+    }
+
+    IEnumerator StartCountdown()
+
     {
         int countdownTime = GameManager.Instance.GameInfo.CountdownDuration;
 
@@ -47,10 +70,10 @@ public class UIManager : MonoBehaviour
 
         // Display something when the countdown is complete
         countdownText.text = "Go!";
-        GameManager.Instance.CanPlay = true;
 
         yield return new WaitForSeconds(1f);
         
+        GameManager.Instance.CanPlay = true;
         OnTimerBegin();
 
         // Optionally, hide or disable the countdown text after the countdown is complete
@@ -74,6 +97,7 @@ public class UIManager : MonoBehaviour
     public void OnTimerEnd()
     {
         isTimerActive = false;
+        onGameStop?.Invoke();
     }
 
     void UpdateTimer()
@@ -102,3 +126,5 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 }
+
+
