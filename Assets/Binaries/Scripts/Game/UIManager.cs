@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,8 +16,21 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
 
+    public TextMeshProUGUI winText;
+
     private float timer;
     private bool isTimerActive;
+
+    public UnityEvent onRoundEnd;
+
+    private List<ColorbyID> playersIDs = new List<ColorbyID>();
+
+    [System.Serializable]
+    public class ColorbyID
+    {
+        public int iD;
+        public string color;
+    }
 
     private void Awake()
     {
@@ -40,12 +54,34 @@ public class UIManager : MonoBehaviour
     
     public void DisplayPlayerInfo(int count, string playerID)
     {
-        playerInfos[count - 1]._playerIDText.text = "Player " +  playerID; 
+        playerInfos[count - 1]._playerIDText.text = "Player " +  playerID;
+        playerInfos[count - 1].gameObject.SetActive(true);
+
+        ColorbyID colorbyID = new ColorbyID { 
+            color = playerID, 
+            iD = count
+        };
+
+        playersIDs.Add(colorbyID);
     }
 
     internal void UpdatePlayerInfo(int _id)
     {
-        playerInfos[_id].gameObject.SetActive(true);
+        PlayerManager.Instance.ResetPlayerPosition();
+        playerInfos[_id].AddScore();
+
+        foreach (var player in playerInfos)
+        {
+            if (player._score == GameManager.Instance.GameInfo.MaxItemCount)
+            {
+                SetWinner(playersIDs[_id].color);
+            }
+        }
+    }
+
+    public void SetWinner(string id)
+    {
+        winText.text = "Player " + id + " win!";
     }
     #endregion
 
@@ -69,11 +105,10 @@ public class UIManager : MonoBehaviour
 
         // Display something when the countdown is complete
         countdownText.text = "Go!";
-
+                
+        yield return new WaitForSeconds(1f);
         GameManager.Instance.CanPlay = true;
         OnTimerBegin();
-        
-        yield return new WaitForSeconds(1f);
         
         // Optionally, hide or disable the countdown text after the countdown is complete
         countdownText.enabled = false;
@@ -89,6 +124,7 @@ public class UIManager : MonoBehaviour
     public void OnTimerBegin()
     {
         isTimerActive = true;
+
         // Update the TextMeshPro Text with the timer value
         timerText.text = FormatTime(timer);
     }

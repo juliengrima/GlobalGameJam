@@ -14,11 +14,11 @@ public class PlayerUIManager : MonoBehaviour
 
     private readonly List<GameObject> _points = new();
 
-    private int _score;
+    public int _score {  get; set; }
 
     private void Start()
     {
-        for (int i = 0; i < GameManager.Instance.GameInfo.MaxItemCount; i++)
+        for (int i = 0; i <= GameManager.Instance.GameInfo.MaxItemCount; i++)
         {
             _points.Add(Instantiate(_pointPrefab, _pointContainer));
             _points[i].SetActive(false);
@@ -28,7 +28,18 @@ public class PlayerUIManager : MonoBehaviour
     public void AddScore()
     {
         _score++;
-        _points[_score].SetActive(false);
+
+        if (_score >= GameManager.Instance.GameInfo.MaxItemCount)
+        {
+            _score = GameManager.Instance.GameInfo.MaxItemCount;
+            UIManager.Instance.onRoundEnd?.Invoke();
+
+            //UIManager.Instance.SetWinner();
+        }
+        else
+        {
+            _points[_score].SetActive(true);
+        }
     }
 
     /// <returns>Is the player still alive</returns>

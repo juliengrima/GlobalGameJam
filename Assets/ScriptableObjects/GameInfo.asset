@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxItemCount: 3
   CountdownDuration: 3
-  GameDuration: 500
+  GameDuration: 180
+  MaxNumberRound: 3
   MinPlayerRequirement: 0
   EventInterval:
     Min: 5

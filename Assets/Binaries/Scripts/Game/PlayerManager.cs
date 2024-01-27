@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -47,5 +48,16 @@ public class PlayerManager : MonoBehaviour
         }
 
         return index;
+    }
+
+    public void ResetPlayerPosition()
+    {
+        for (int i = 0; i < _players.Count; i++)
+        {
+            var index = _players.Count > 3 ? 3 : _players.Count;
+
+            _players[i].transform.position = _spawnPoints[index].position;
+            _players[i].transform.rotation = _spawnPoints[index].rotation;
+        }
     }
 }

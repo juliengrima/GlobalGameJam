@@ -40,6 +40,7 @@ public class PlayerStateMachine : MonoBehaviour
         var isAlive = true;
         if (!isAlive)
         {
+
             GameManager.Instance.EndGame(_id);
         }
     }
