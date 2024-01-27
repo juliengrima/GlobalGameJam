@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class PlayerUIManager : MonoBehaviour
 {
     [SerializeField]
     private Transform _pointContainer;
+    public TextMeshProUGUI _playerIDText;
 
     [SerializeField]
     private GameObject _pointPrefab;
@@ -17,6 +19,7 @@ public class PlayerUIManager : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.GameInfo.MaxItemCount; i++)
         {
             _points.Add(Instantiate(_pointPrefab, _pointContainer));
+            _points[i].SetActive(false);
         }
     }
 

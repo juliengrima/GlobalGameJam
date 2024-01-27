@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour
         player.transform.rotation = _spawnPoints[index].rotation;
         player.GetComponentInChildren<PlayerRenderer>().SetMat(_materials[index]);
         _players.Add(player);
+        UIManager.Instance.DisplayPlayerInfo(_players.Count, _materials[index].name);
 
         if (!_isGameReady && _players.Count >= GameManager.Instance.GameInfo.MinPlayerRequirement)
         {

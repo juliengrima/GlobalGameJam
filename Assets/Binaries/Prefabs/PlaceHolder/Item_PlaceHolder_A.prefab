@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8366568556495861486}
   - component: {fileID: 5000092726192651374}
   - component: {fileID: 1434249636513241026}
+  - component: {fileID: -9099769109526878581}
   m_Layer: 7
   m_Name: Item_PlaceHolder_A
   m_TagString: Untagged
@@ -118,4 +119,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc40418480b7c0248aef5c08251e49d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEaten: 0
+--- !u!114 &-9099769109526878581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4995320857942950880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812604d8c86d6f14eb23c9f6f93ca6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onItemTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5279941806694501375, guid: 197f8a9ce6be9412d9ae278e2f60b064,
+          type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
