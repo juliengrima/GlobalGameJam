@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public Action onGameBegin;
+    public List<PlayerInfoDisplay> playerInfos = new List<PlayerInfoDisplay>();
 
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
@@ -24,6 +24,14 @@ public class UIManager : MonoBehaviour
     {
         UpdateTimer();
     }
+
+    #region Player Infos Management
+    
+    public void DisplayPlayerInfo()
+    {
+
+    }
+    #endregion
 
     #region Countdown
     IEnumerator StartCountdown()
@@ -92,3 +100,5 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 }
+
+
