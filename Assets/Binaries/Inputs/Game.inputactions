@@ -15,18 +15,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "JUMP",
+                    "name": "MASH",
                     "type": "Button",
-                    "id": "a57c0eac-6502-40af-a02a-edff2d57bb39",
+                    "id": "0d3e2459-6374-4471-89db-1e35d6253c4f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EAT",
+                    "name": "HIT",
                     "type": "Button",
-                    "id": "0d3e2459-6374-4471-89db-1e35d6253c4f",
+                    "id": "74845ec0-fd37-4cd1-8ef7-5d624e2d66c0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -146,45 +146,23 @@
                 },
                 {
                     "name": "",
-                    "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
+                    "id": "e0aff5c8-7e20-4cdc-80b6-e1402c50b67c",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "JUMP",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "JUMP",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e0aff5c8-7e20-4cdc-80b6-e1402c50b67c",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
                     "groups": "Gamepad",
-                    "action": "EAT",
+                    "action": "MASH",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "c3ced60d-970d-47fe-8337-e392022b25f0",
-                    "path": "<Keyboard>/leftShift",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "EAT",
+                    "action": "MASH",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -195,7 +173,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "EAT",
+                    "action": "MASH",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2c53d05-a4ab-479c-b357-449cd9b03e34",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "HIT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ded1dab6-4af5-44b6-9a09-4169869bd5ea",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "HIT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
