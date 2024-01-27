@@ -40,7 +40,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void OnMash(InputAction.CallbackContext value)
     {
-        if (value.performed)
+        if (value.performed && GameManager.Instance.CanPlay)
         {
             _mashCounter++;
         }
@@ -48,7 +48,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void OnHit(InputAction.CallbackContext value)
     {
-        if (value.performed)
+        if (value.performed && GameManager.Instance.CanPlay)
         {
             var hit01 = _mashCounter / (float)_info.MaxHitCount;
             var distance = _info.DistanceCurve.Evaluate(hit01) * _info.MaxDistance;
@@ -62,7 +62,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update()
     {
-        _entityMove.Moving(_dir);
+        if (GameManager.Instance.CanPlay)
+        {
+            _entityMove.Moving(_dir);
+        }
     }
 
     private void LateUpdate()

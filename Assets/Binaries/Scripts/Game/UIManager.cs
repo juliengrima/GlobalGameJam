@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -12,23 +10,27 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
 
-    public float timer;
+    private float timer;
     private bool isTimerActive;
 
     void Start()
     {
         StartCoroutine(StartCountdown());
+        timer = GameManager.Instance.GameInfo.GameDuration;
     }
 
     private void Update()
     {
-        UpdateTimer();
+        if (GameManager.Instance.CanPlay)
+        {
+            UpdateTimer();
+        }
     }
 
     #region Countdown
     IEnumerator StartCountdown()
     {
-        int countdownTime = 3;
+        int countdownTime = GameManager.Instance.GameInfo.CountdownDuration;
 
         while (countdownTime > 0)
         {
@@ -39,6 +41,8 @@ public class UIManager : MonoBehaviour
 
         // Display something when the countdown is complete
         countdownText.text = "Go!";
+        GameManager.Instance.CanPlay = true;
+
         yield return new WaitForSeconds(1f);
         
         OnTimerBegin();
