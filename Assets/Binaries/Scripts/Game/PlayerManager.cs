@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
         player.GetComponentInChildren<PlayerRenderer>().SetMat(_materials[index]);
         _players.Add(player);
 
-        if (!_isGameReady && _players.Count > 1)
+        if (!_isGameReady && _players.Count >= GameManager.Instance.GameInfo.MinPlayerRequirement)
         {
             _isGameReady = true;
             StartCoroutine(UIManager.Instance.StartCountdown());
