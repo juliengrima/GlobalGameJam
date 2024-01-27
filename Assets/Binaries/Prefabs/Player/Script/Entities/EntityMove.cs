@@ -94,6 +94,11 @@ public class EntityMove : MonoBehaviour
         playerVelocity.y += _gravity * Time.deltaTime;
         */
 
+        if (EventManager.Instance.AreKeysInverted)
+        {
+            moving = -moving;
+        }
+
         if (moving.magnitude != 0f)
         {
             float step = _info.RotationSpeed * Time.deltaTime;
