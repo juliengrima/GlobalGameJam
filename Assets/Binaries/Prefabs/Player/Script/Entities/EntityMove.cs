@@ -69,7 +69,6 @@ public class EntityMove : MonoBehaviour
     // Moving method
     public void Moving(Vector2 moving)
     {
-        Debug.Log(moving);
         // Jump stuff, enable back if relevant
         /*
         groundedPlayer = _controller.isGrounded;
