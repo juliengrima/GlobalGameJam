@@ -17,6 +17,25 @@ namespace Manager
         {
             throw new NotImplementedException();
         }
+
+        internal static IEnumerator SpawnGameObjectInList(Collider collider, List<GameObject> list, int index, float delay)
+        {
+            while (true)
+            {
+                if (collider != null)
+                {
+                    Vector3 spawnPoint = Helpers.GetRandomPointInBounds(collider.bounds);
+                    Instantiate(list[index], spawnPoint, Quaternion.identity);
+                }
+                else
+                {
+                    Debug.LogError("No collider found on the GameObject.");
+                }
+
+                yield return new WaitForSeconds(delay);
+            }
+            
+        }
         #endregion
     }
 }
