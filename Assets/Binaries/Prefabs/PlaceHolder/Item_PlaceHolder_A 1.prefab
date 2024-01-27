@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1434249636513241026}
   m_Layer: 7
   m_Name: Item_PlaceHolder_A 1
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,19 +118,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc40418480b7c0248aef5c08251e49d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyEvt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8953578400838145630, guid: cfdabb7fb158d4a4ca0f42e8174c4c56,
-          type: 3}
-        m_TargetAssemblyTypeName: ItemSpawner, Assembly-CSharp
-        m_MethodName: SpawnItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

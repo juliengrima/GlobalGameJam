@@ -25,6 +25,8 @@ public class PlayerStateMachine : MonoBehaviour
     private float _currDist, _targetDist = -1f;
 
     private Vector3 _initialOffset;
+
+    public float TotalDistance { private set; get; }
     #endregion
 
     public void OnItemTrigger(GameObject go)
