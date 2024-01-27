@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     #region Champs
+    [SerializeField] private GameObject _mainParent;
     [Header("Player_Actions_Components")]
     [SerializeField] EntityMove _entityMove;
     [SerializeField] EntityFire _entityFire; //EAT
@@ -52,6 +53,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     #endregion
     #region BeforeStart
+    private void Start()
+    {
+        PlayerManager.Instance.Register(_mainParent);
+    }
+
     private void Reset()
     {
         // Call components when LevelDesigner take it to the Hierarchy

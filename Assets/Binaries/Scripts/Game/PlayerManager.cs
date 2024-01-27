@@ -1,23 +1,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance { private set; get; }
+
+    [SerializeField]
+    private Material[] _materials;
+
     private Transform[] _spawnPoints;
 
     private readonly List<GameObject> _players = new();
 
     private void Awake()
     {
+        Instance = this;
+
+        var manager = GetComponent<PlayerInputManager>();
         _spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint").Select(x => x.transform).ToArray();
+
+        Assert.AreEqual(_spawnPoints.Length, manager.maxPlayerCount, "Spawn point count must match max player count");
+        Assert.AreEqual(_materials.Length, manager.maxPlayerCount, "Material count must match max player count");
+
     }
 
-    public void OnPlayJoin(PlayerInput pi)
+    public void Register(GameObject player)
     {
-        pi.transform.position = _spawnPoints[_players.Count].position;
-        pi.transform.rotation = _spawnPoints[_players.Count].rotation;
-        _players.Add(pi.gameObject);
+        var index = _players.Count > 3 ? 3 : _players.Count;
+
+        player.transform.position = _spawnPoints[index].position;
+        player.transform.rotation = _spawnPoints[index].rotation;
+        player.GetComponentInChildren<PlayerRenderer>().SetMat(_materials[index]);
+        _players.Add(player);
     }
 }

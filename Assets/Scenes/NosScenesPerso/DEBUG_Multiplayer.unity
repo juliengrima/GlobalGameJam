@@ -1353,24 +1353,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 2
-  m_MaxPlayerCount: -1
+  m_MaxPlayerCount: 4
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 964986797}
-        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
-        m_MethodName: OnPlayJoin
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_PlayerLeftEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1409,6 +1397,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776189af9530fe949b689596a2773305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _materials:
+  - {fileID: 2100000, guid: c6645780f774085418dc02af4efd747b, type: 2}
+  - {fileID: 2100000, guid: 0768995c35ccfaf44ad1087ea88ed3a8, type: 2}
+  - {fileID: 2100000, guid: ceab6d4571ed62d4ca0e5f2efaf08010, type: 2}
+  - {fileID: 2100000, guid: ac568a17cb747c649bce935fd4becb8b, type: 2}
 --- !u!43 &966987794
 Mesh:
   m_ObjectHideFlags: 0
