@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*using Manager;*/
-using Unity.VisualScripting;
-using System;
 
 public class ItemSpawner : MonoBehaviour
 {
@@ -40,7 +36,11 @@ public class ItemSpawner : MonoBehaviour
             GameObject newItem = Instantiate(list[index], randomPoint, Quaternion.identity);
 
             Item itemController = newItem.GetComponent<Item>();
-            itemController.onEat += SpawnItem;
+            itemController.OnDestroyEvt.AddListener(new(() =>
+            {
+                SpawnItem();
+            }));
+            //itemController.onEat += SpawnItem;
         }
         else
         {

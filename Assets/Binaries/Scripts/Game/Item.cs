@@ -1,38 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Item : MonoBehaviour
 {
-    public Action onEat;
+    public UnityEvent OnDestroyEvt { get; } = new();
 
-    [SerializeField] private bool isEaten;
-
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (isEaten)
+        if (other.CompareTag("Player"))
         {
-            IsEat();
+            other.GetComponent<ColliderReceptor>().InvokeItemTrigger(other.gameObject);
+            Destroy(gameObject);
         }
     }
 
-    public void IsEat()
+    private void OnDestroy()
     {
-        isEaten = !isEaten;
-
-        Destroy(this.gameObject);
-
-        Debug.Log("Item was eaten by Player : " /* + GetPlayerID()*/);
-
-        onEat?.Invoke();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player") && !isEaten)
-        {
-            IsEat();
-        }
+        OnDestroyEvt.Invoke();
     }
 }
