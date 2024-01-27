@@ -11,7 +11,7 @@ public class ItemSpawner : MonoBehaviour
 
     
 
-    private void Awake()
+    private void Start()
     {
         //For testing item spawning
         //StartCoroutine(CoroutinesList.SpawnGameObjectInList(GetComponent<Collider>(), itemsToSpawn, Helpers.GetRandomInt(0, itemsToSpawn.Count), spawnDelay, bufferDistance
