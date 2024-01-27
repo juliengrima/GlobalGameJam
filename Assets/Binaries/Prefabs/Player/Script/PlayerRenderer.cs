@@ -7,6 +7,8 @@ public class PlayerRenderer : MonoBehaviour
 
     public void SetMat(Material mat)
     {
-        _renderer.material = mat;
+        var mats = _renderer.materials;
+        mats[1] = mat;
+        _renderer.materials = mats;
     }
 }
