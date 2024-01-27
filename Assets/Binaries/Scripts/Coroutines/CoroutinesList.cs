@@ -8,16 +8,14 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-namespace Manager
+public class CoroutinesList : MonoBehaviour
 {
-    public class CoroutinesList : MonoBehaviour
+    #region PlayerCoroutines
+    public IEnumerator MoveCoroutine(EntityMove move)
     {
-        #region Coroutines
-        IEnumerator EndCoroutine()
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
+        throw new NotImplementedException();
+        //yield return new WaitForEndOfFrame(); 
     }
+    #endregion
 }
 
