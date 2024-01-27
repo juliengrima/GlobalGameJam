@@ -19,8 +19,6 @@ public class PlayerStateMachine : MonoBehaviour
     private bool _isInit;
 
     private int _mashCounter;
-
-    private int _itemEattenCount;
     #endregion
 
     public void OnItemTrigger(GameObject go)
@@ -30,7 +28,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Eat()
     {
-        _itemEattenCount++;
     }
 
     public void OnMove(InputAction.CallbackContext value)
