@@ -96,20 +96,14 @@ public class EntityMove : MonoBehaviour
 
         if (moving.magnitude != 0f)
         {
-            var forward = moving.y;
-
             float step = _info.RotationSpeed * Time.deltaTime;
-            //_rb.transform.Rotate(0f, moving.x * step, 0f);
 
             var dir = moving * _info.LinearSpeed * Time.deltaTime;
             _rb.transform.Rotate(0f, moving.x * step, 0f);
-            _direction = new Vector3(dir.x, _rb.velocity.z, dir.y);
-            //_rb.velocity = moving * _speed;
-            _rb.velocity =  _direction * forward;
-            Debug.Log($"Velocite rb : {_rb.velocity}");
 
-            //_controller.transform.Rotate(0f, moving.x * step, 0f);
-            //_controller.Move(_controller.transform.forward * _speed * Time.deltaTime * forward);
+            _rb.velocity = new Vector3(dir.x * _rb.transform.forward.x, _rb.velocity.y, dir.y * _rb.transform.forward.z);
+
+            Debug.Log($"Velocite rb : {_rb.velocity}");
         }
     }
 

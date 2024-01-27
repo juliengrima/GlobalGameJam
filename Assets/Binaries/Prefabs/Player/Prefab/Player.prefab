@@ -612,6 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: 52815df20664e054c8602ef000200d5d, type: 2}
+  _mainParent: {fileID: 8059371563575372661}
   _rb: {fileID: 4688974532856418225}
   _playerStateMachine: {fileID: 1034880950507596605}
   _grounded: {fileID: 4770433742942684060}
