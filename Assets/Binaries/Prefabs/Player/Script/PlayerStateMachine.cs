@@ -89,11 +89,18 @@ public class PlayerStateMachine : MonoBehaviour
         _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
 
         _rb.velocity = Vector3.zero;
-        _rb.AddForce(dir.normalized * 10f, ForceMode.Impulse);
+        dir.y = 0f;
+        _rb.AddForce(dir.normalized * _info.AttackForce, ForceMode.Impulse);
 
         yield return new WaitForSeconds(2f);
 
         _canMove = true;
+    }
+
+    public void ResetHead()
+    {
+        _targetDist = -1f;
+        _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
     }
 
     private void Update()

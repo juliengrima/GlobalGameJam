@@ -16,5 +16,6 @@ public class HeadDetector : MonoBehaviour
         {
             other.GetComponentInChildren<PlayerStateMachine>().StunAndThrow(other.transform.position - transform.position);
         }
+        _player.ResetHead();
     }
 }

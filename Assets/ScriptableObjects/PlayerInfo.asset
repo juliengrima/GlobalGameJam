@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68aa28fdcab125e488753636e08090cf, type: 3}
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
-  LinearSpeed: 800
+  LinearSpeed: 300
   RotationSpeed: 50
   MaxDistance: 3
   MaxHitCount: 20
@@ -41,3 +41,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   HeadSpeed: 12
+  AttackForce: 20

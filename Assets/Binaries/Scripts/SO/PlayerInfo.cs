@@ -12,4 +12,5 @@ public class PlayerInfo : ScriptableObject
     public int MaxHitCount;
     public AnimationCurve DistanceCurve;
     public float HeadSpeed;
+    public float AttackForce;
 }

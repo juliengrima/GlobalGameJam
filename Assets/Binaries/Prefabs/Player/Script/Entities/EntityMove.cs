@@ -108,6 +108,10 @@ public class EntityMove : MonoBehaviour
 
             _rb.velocity = new Vector3(dir.x, _rb.velocity.y, dir.z);
         }
+        else
+        {
+            _rb.velocity = new(0f, _rb.velocity.y, 0f);
+        }
     }
 
     private void OnDrawGizmos()
