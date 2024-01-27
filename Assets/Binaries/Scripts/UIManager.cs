@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,22 +7,25 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public Action onGameBegin;
+
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
 
     public float timer;
+    private bool isTimerActive;
 
     void Start()
     {
         StartCoroutine(StartCountdown());
     }
 
-    Update ()
+    private void Update ()
     {
-
+        UpdateTimer();
     }
 
-    #region Timer
+    #region Countdown
     IEnumerator StartCountdown()
     {
         int countdownTime = 3;
@@ -35,6 +39,7 @@ public class UIManager : MonoBehaviour
 
         // Display something when the countdown is complete
         countdownText.text = "Go!";
+        OnTImerBegin();
         yield return new WaitForSeconds(1f);
 
         // Optionally, hide or disable the countdown text after the countdown is complete
@@ -43,13 +48,32 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Timer
+    public bool IsTimerActive()
+    {
+        return isTimerActive;
+    }
+    
+    public void OnTImerBegin()
+    {
+        isTimerActive = true;
+    }
+
+    public void OnTimerEnd()
+    {
+        isTimerActive = false;
+    }
+
     void UpdateTimer()
     {
         // Check if the timer has reached 0
-        if (timer < 0)
+        if (IsTimerActive() && timer > 0)
         {
             // Decrement the timer by the time elapsed since the last frame
             timer -= Time.deltaTime;
+        }
+        else
+        {
+            OnTimerEnd();
         }
     }
 
