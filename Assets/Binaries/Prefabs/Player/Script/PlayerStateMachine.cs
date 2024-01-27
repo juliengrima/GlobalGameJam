@@ -53,10 +53,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     #endregion
     #region BeforeStart
-    private void Start()
-    {
-        PlayerManager.Instance.Register(_mainParent);
-    }
 
     private void Reset()
     {
@@ -73,6 +69,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
     #endregion
 
+    private bool _isInit;
     public void OnMove(InputAction.CallbackContext value)
     {
         _dir = value.ReadValue<Vector2>().normalized;
@@ -80,6 +77,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update()
     {
+        if (!_isInit)
+        {
+            _isInit = true;
+            PlayerManager.Instance.Register(_mainParent);
+        }
         _entityMove.Moving(_dir);
     }
 }
