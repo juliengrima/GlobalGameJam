@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
 
         UIManager.Instance.DisplayPlayerInfo(_players.Count, _materials[index].name);
 
-        if (!_isGameReady && _players.Count >= 1)
+        if (!_isGameReady && _players.Count >= GameManager.Instance.GameInfo.MinPlayerRequirement)
         {
             _isGameReady = true;
             UIManager.Instance.StartCountDown();
