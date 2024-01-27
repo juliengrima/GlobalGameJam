@@ -15,6 +15,11 @@ public class UIManager : MonoBehaviour
     public float timer;
     private bool isTimerActive;
 
+    private void Awake()
+    {
+        
+    }
+
     void Start()
     {
         StartCoroutine(StartCountdown());
@@ -39,8 +44,9 @@ public class UIManager : MonoBehaviour
 
         // Display something when the countdown is complete
         countdownText.text = "Go!";
-        OnTImerBegin();
         yield return new WaitForSeconds(1f);
+        
+        OnTimerBegin();
 
         // Optionally, hide or disable the countdown text after the countdown is complete
         countdownText.enabled = false;
@@ -53,9 +59,11 @@ public class UIManager : MonoBehaviour
         return isTimerActive;
     }
     
-    public void OnTImerBegin()
+    public void OnTimerBegin()
     {
         isTimerActive = true;
+        // Update the TextMeshPro Text with the timer value
+        timerText.text = FormatTime(timer);
     }
 
     public void OnTimerEnd()
@@ -65,6 +73,9 @@ public class UIManager : MonoBehaviour
 
     void UpdateTimer()
     {
+        // Update the TextMeshPro Text with the timer value
+        timerText.text = FormatTime(timer);
+
         // Check if the timer has reached 0
         if (IsTimerActive() && timer > 0)
         {
