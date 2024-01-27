@@ -25,9 +25,17 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void OnItemTrigger(GameObject go)
     {
-        if (go.CompareTag(""))
+        if (go.CompareTag("Pizza"))
         {
             Eat();
+        }
+        else if (go.CompareTag("Bonus"))
+        {
+            Debug.Log("Add Speed");
+        }
+        else if (go.CompareTag("Malus"))
+        {
+            Debug.Log("Substract Speed");
         }
 
     }

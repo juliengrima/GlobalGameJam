@@ -1733,6 +1733,7 @@ Transform:
   - {fileID: 1275552658}
   - {fileID: 94931530}
   - {fileID: 401903484}
+  - {fileID: 705576606}
   - {fileID: 1765460659}
   - {fileID: 1390217074}
   m_Father: {fileID: 0}
@@ -2105,6 +2106,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4762333100369702764, guid: 9e0c391c737c3d24ba03ca3e31d844c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7375752063056161328, guid: 9e0c391c737c3d24ba03ca3e31d844c5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2147,8 +2153,8 @@ Transform:
   - {fileID: 44475334}
   - {fileID: 1338347833}
   - {fileID: 459750280}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 641414226}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &724390085
 GameObject:
@@ -5175,6 +5181,12 @@ PrefabInstance:
       propertyPath: addEvent
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8953578400838145630, guid: cfdabb7fb158d4a4ca0f42e8174c4c56,
+        type: 3}
+      propertyPath: itemsToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 3361181825237044438, guid: d921ac94ff4f97b4080e5a438a95f587,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

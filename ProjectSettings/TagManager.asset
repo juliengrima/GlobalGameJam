@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - SpawnPoint
+  - Bonus
+  - Malus
+  - Pizza
   layers:
   - Default
   - TransparentFX

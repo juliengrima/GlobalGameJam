@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Bonus : Item
 {
+    private void Start()
+    {
+        Destroy(gameObject, 5f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

@@ -10,6 +10,7 @@ public class ItemSpawner : MonoBehaviour
     private float bufferDistance = 0.1f;
     private GameObject _lastItemSpawned;
 
+    public bool activateRandomSpawn = false;
     public bool repeatSpawn = false;
     public bool addEvent = false;
 
@@ -19,8 +20,10 @@ public class ItemSpawner : MonoBehaviour
         {
             StartCoroutine(CoroutinesList.SpawnGameObjectInList(GetComponent<Collider>(), itemsToSpawn, Helpers.GetRandomInt(0, itemsToSpawn.Count), spawnDelay, bufferDistance));
         }
-
-        UIManager.Instance.onGameBegin += SpawnFirstItem;
+        else
+        {
+            UIManager.Instance.onGameBegin += SpawnFirstItem;
+        }
     }
 
     
