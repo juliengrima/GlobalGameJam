@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: GameInfo
   m_EditorClassIdentifier: 
   MaxItemCount: 3
+  CountdownDuration: 3
+  GameDuration: 500
