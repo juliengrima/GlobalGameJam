@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     public void OnPlayJoin(PlayerInput pi)
     {
         pi.transform.position = _spawnPoints[_players.Count].position;
+        pi.transform.rotation = _spawnPoints[_players.Count].rotation;
         _players.Add(pi.gameObject);
     }
 }
