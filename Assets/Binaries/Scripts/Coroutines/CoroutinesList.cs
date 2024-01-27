@@ -25,7 +25,12 @@ namespace Manager
                 if (collider != null)
                 {
                     Vector3 spawnPoint = Helpers.GetRandomPointInBounds(collider.bounds);
-                    Instantiate(list[index], spawnPoint, Quaternion.identity);
+                    
+                    GameObject newItem = Instantiate(list[index], spawnPoint, Quaternion.identity);
+                    
+                    GameObject lastItemSpawned = newItem;
+
+                    Destroy(lastItemSpawned, 0.8f);
                 }
                 else
                 {

@@ -74,3 +74,7 @@ crashlytics-build.properties
 
 ###### MAC Files #####
 .DS_Store
+.plastic/plastic.changes
+.plastic/plastic.selector
+.plastic/plastic.wktree
+.plastic/plastic.workspace
