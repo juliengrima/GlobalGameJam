@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: 52815df20664e054c8602ef000200d5d, type: 2}
   _mainParent: {fileID: 5279941806694501375}
+  _targetBone: {fileID: 6168374055009799967}
   _entityMove: {fileID: 4683729569524586756}
   _animator: {fileID: 0}
   _source: {fileID: 8633556038961674264}
@@ -1013,6 +1014,12 @@ Transform:
 --- !u!4 &2716919784916820695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5746564759562468899, guid: a2266d3afb7d06147a4aafec557eff9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7641366211905527028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6168374055009799967 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4580690304701912043, guid: a2266d3afb7d06147a4aafec557eff9e,
     type: 3}
   m_PrefabInstance: {fileID: 7641366211905527028}
   m_PrefabAsset: {fileID: 0}

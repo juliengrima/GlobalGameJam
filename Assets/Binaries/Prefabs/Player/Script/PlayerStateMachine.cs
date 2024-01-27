@@ -6,6 +6,7 @@ public class PlayerStateMachine : MonoBehaviour
     #region Champs
     [SerializeField] private PlayerInfo _info;
     [SerializeField] private GameObject _mainParent;
+    [SerializeField] private Transform _targetBone;
     [Header("Player_Actions_Components")]
     [SerializeField] EntityMove _entityMove;
     [Header("Player_Animations")]
