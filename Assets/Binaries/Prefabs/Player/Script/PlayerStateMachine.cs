@@ -30,6 +30,7 @@ public class PlayerStateMachine : MonoBehaviour
     //Private Fields
     bool _death;
     Vector2 _dir;
+    private bool _isInit;
 
     private int _mashCounter;
     //Private Components
@@ -72,7 +73,6 @@ public class PlayerStateMachine : MonoBehaviour
     }
     #endregion
 
-    private bool _isInit;
     public void OnMove(InputAction.CallbackContext value)
     {
         _dir = value.ReadValue<Vector2>().normalized;
@@ -102,11 +102,15 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update()
     {
+        _entityMove.Moving(_dir);
+    }
+
+    private void LateUpdate()
+    {
         if (!_isInit)
         {
             _isInit = true;
             PlayerManager.Instance.Register(_mainParent);
         }
-        _entityMove.Moving(_dir);
     }
 }
