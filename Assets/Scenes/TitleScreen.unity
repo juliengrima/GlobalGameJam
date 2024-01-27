@@ -2113,12 +2113,12 @@ PrefabInstance:
     - target: {fileID: 3857519904215961249, guid: 73e1c71f5fc060f4888d992406ac47e1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1743.0001
+      value: 1742.9999
       objectReference: {fileID: 0}
     - target: {fileID: 3857519904215961249, guid: 73e1c71f5fc060f4888d992406ac47e1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 891.50006
+      value: 891.49994
       objectReference: {fileID: 0}
     - target: {fileID: 3857519904215961249, guid: 73e1c71f5fc060f4888d992406ac47e1,
         type: 3}
@@ -2451,7 +2451,8 @@ PrefabInstance:
       value: Play button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8652397611156210584, guid: d7e1c272529866d448f99b86770b8fbb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7e1c272529866d448f99b86770b8fbb, type: 3}
