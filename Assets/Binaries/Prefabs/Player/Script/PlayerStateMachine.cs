@@ -79,11 +79,11 @@ public class PlayerStateMachine : MonoBehaviour
         {
             if (_currDist < _targetDist)
             {
-                _currDist += Time.deltaTime;
-                _targetBone.transform.position = _mainParent.transform.position + _initialOffset + _mainParent.transform.forward * _currDist;
+                _currDist += Time.deltaTime * _info.HeadSpeed;
+                _targetBone.transform.position = _mainParent.transform.position + _initialOffset + _mainParent.transform.forward * _currDist * EventManager.Instance.TimeMultiplier;
                 if (_currDist >= _targetDist)
                 {
-                    Debug.Break();
+                    _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
                 }
             }
 

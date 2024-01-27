@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LinearSpeed: 800
   RotationSpeed: 50
-  MaxDistance: 10
+  MaxDistance: 3
   MaxHitCount: 20
   DistanceCurve:
     serializedVersion: 2
@@ -40,3 +40,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  HeadSpeed: 12
