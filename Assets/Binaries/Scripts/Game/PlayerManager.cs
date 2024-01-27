@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    public void Register(GameObject player)
+    public int Register(GameObject player)
     {
         var index = _players.Count > 3 ? 3 : _players.Count;
 
@@ -35,5 +35,7 @@ public class PlayerManager : MonoBehaviour
         player.transform.rotation = _spawnPoints[index].rotation;
         player.GetComponentInChildren<PlayerRenderer>().SetMat(_materials[index]);
         _players.Add(player);
+
+        return index;
     }
 }
