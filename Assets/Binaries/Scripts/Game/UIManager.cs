@@ -41,7 +41,11 @@ public class UIManager : MonoBehaviour
     public void DisplayPlayerInfo(int count, string playerID)
     {
         playerInfos[count - 1]._playerIDText.text = "Player " +  playerID; 
-        playerInfos[count - 1].gameObject.SetActive(true);
+    }
+
+    internal void UpdatePlayerInfo(int _id)
+    {
+        playerInfos[_id].gameObject.SetActive(true);
     }
     #endregion
 
@@ -120,10 +124,6 @@ public class UIManager : MonoBehaviour
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    internal void UpdatePlayerInfo()
-    {
-        throw new NotImplementedException();
-    }
     #endregion
 }
 

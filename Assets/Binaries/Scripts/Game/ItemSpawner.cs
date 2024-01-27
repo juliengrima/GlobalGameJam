@@ -21,7 +21,6 @@ public class ItemSpawner : MonoBehaviour
     public void SpawnItem()
     {
         SpawnItem(GetComponent<Collider>(), itemsToSpawn, Helpers.GetRandomInt(0, itemsToSpawn.Count), bufferDistance);
-        Debug.Log("");
     }
 
     private void SpawnItem(Collider collider, List<GameObject> list, int index, float distance)
