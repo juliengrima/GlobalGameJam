@@ -18,9 +18,9 @@ public class PlayerStateMachine : MonoBehaviour
     Vector2 _dir;
     private bool _isInit;
 
-    private int _mashCounter;
+    private int _id;
 
-    private int _itemEattenCount;
+    private int _mashCounter;
     #endregion
 
     public void OnItemTrigger(GameObject go)
@@ -30,7 +30,12 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Eat()
     {
-        _itemEattenCount++;
+        // Call UI to remove health
+        var isAlive = true;
+        if (!isAlive)
+        {
+            GameManager.Instance.EndGame(_id);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext value)
@@ -73,7 +78,7 @@ public class PlayerStateMachine : MonoBehaviour
         if (!_isInit)
         {
             _isInit = true;
-            PlayerManager.Instance.Register(_mainParent);
+            _id = PlayerManager.Instance.Register(_mainParent);
         }
     }
 }

@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 8059371563575372661}
   - component: {fileID: 5316977934643343908}
   - component: {fileID: 6507258639267300675}
+  - component: {fileID: 2454228118327272812}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -346,6 +347,33 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2454228118327272812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5279941806694501375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812604d8c86d6f14eb23c9f6f93ca6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onItemTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1034880950507596605}
+        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
+        m_MethodName: OnItemTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5397203964738311985
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,10 +898,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2072822712874281213}
-    - targetCorrespondingSourceObject: {fileID: 3654448385624893251, guid: 3c5bb77bdea5f44a592b15a42ccfc210,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7891857566602853463}
   m_SourcePrefab: {fileID: 100100000, guid: 3c5bb77bdea5f44a592b15a42ccfc210, type: 3}
 --- !u!95 &1476020273688887564 stripped
 Animator:
@@ -933,33 +957,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 0
   m_Center: {x: 0.68, y: -0.16, z: 0}
---- !u!114 &7891857566602853463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416443979643964513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 812604d8c86d6f14eb23c9f6f93ca6b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onItemTrigger:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1034880950507596605}
-        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
-        m_MethodName: OnItemTrigger
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!23 &5855438078563020745 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6827414150234752235, guid: 3c5bb77bdea5f44a592b15a42ccfc210,

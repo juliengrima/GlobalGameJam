@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { private set; get; }
+
+    public Action onGameBegin;
     public static UIManager Instance;
 
-    public static Action onGameStart, onGameStop;
-
     public List<PlayerUIManager> playerInfos = new List<PlayerUIManager>();
+
 
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
@@ -55,6 +57,7 @@ public class UIManager : MonoBehaviour
     }
 
     IEnumerator StartCountdown()
+
     {
         int countdownTime = GameManager.Instance.GameInfo.CountdownDuration;
 

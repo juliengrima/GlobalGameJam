@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
 
     private readonly List<GameObject> _players = new();
 
+    private bool _isGameReady;
+
     private void Awake()
     {
         Instance = this;
@@ -27,7 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    public void Register(GameObject player)
+    public int Register(GameObject player)
     {
         var index = _players.Count > 3 ? 3 : _players.Count;
 
@@ -35,11 +37,14 @@ public class PlayerManager : MonoBehaviour
         player.transform.rotation = _spawnPoints[index].rotation;
         player.GetComponentInChildren<PlayerRenderer>().SetMat(_materials[index]);
         _players.Add(player);
-        UIManager.Instance.DisplayPlayerInfo(_players.Count, _materials[index].name);
-    }
 
-    public int GetPlayerCount()
-    {
-        return _players.Count;
+        if (!_isGameReady && _players.Count > 1)
+        {
+            _isGameReady = true;
+            StartCoroutine(UIManager.Instance.StartCountdown());
+        }
+
+        return index;
+        UIManager.Instance.DisplayPlayerInfo(_players.Count, _materials[index].name);
     }
 }
