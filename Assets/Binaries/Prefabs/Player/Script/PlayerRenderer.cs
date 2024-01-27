@@ -3,7 +3,7 @@
 public class PlayerRenderer : MonoBehaviour
 {
     [SerializeField]
-    private MeshRenderer _renderer;
+    private SkinnedMeshRenderer _renderer;
 
     public void SetMat(Material mat)
     {
