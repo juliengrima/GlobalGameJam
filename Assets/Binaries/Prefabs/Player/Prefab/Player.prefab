@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e161ff4e5d9432abc454afbc91389d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _info: {fileID: 11400000, guid: 52815df20664e054c8602ef000200d5d, type: 2}
   _mainParent: {fileID: 5279941806694501375}
   _entityMove: {fileID: 4683729569524586756}
   _entityFire: {fileID: 2350426417696592542}
@@ -283,11 +284,19 @@ MonoBehaviour:
     m_ActionId: 72fe3795-3819-4ccd-a629-cfbcb40da6f7
     m_ActionName: Player/MOVE[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a57c0eac-6502-40af-a02a-edff2d57bb39
-    m_ActionName: Player/JUMP[/XInputControllerWindows/buttonSouth,/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1034880950507596605}
+        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
+        m_MethodName: OnMash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0d3e2459-6374-4471-89db-1e35d6253c4f
     m_ActionName: Player/EAT[/XInputControllerWindows/rightTrigger,/Keyboard/leftShift,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -330,6 +339,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 623f43f3-dbf7-4d49-9709-97ab729f94b2
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1034880950507596605}
+        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 74845ec0-fd37-4cd1-8ef7-5d624e2d66c0
+    m_ActionName: Player/HIT[/XInputControllerWindows/rightTrigger,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

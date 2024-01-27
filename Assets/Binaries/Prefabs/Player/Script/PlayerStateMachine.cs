@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     #region Champs
+    [SerializeField] private PlayerInfo _info;
     [SerializeField] private GameObject _mainParent;
     [Header("Player_Actions_Components")]
     [SerializeField] EntityMove _entityMove;
@@ -29,6 +30,8 @@ public class PlayerStateMachine : MonoBehaviour
     //Private Fields
     bool _death;
     Vector2 _dir;
+
+    private int _mashCounter;
     //Private Components
     Coroutine _fallCoroutine;
     Coroutine _startCoroutine;
@@ -73,6 +76,28 @@ public class PlayerStateMachine : MonoBehaviour
     public void OnMove(InputAction.CallbackContext value)
     {
         _dir = value.ReadValue<Vector2>().normalized;
+    }
+
+    public void OnMash(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            _mashCounter++;
+        }
+    }
+
+    public void OnHit(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            var hit01 = _mashCounter / (float)_info.MaxHitCount;
+            var distance = _info.DistanceCurve.Evaluate(hit01) * _info.MaxDistance;
+
+            Debug.Log($"Distance reached: {distance}");
+            // TODO: Throw head here! Use distance to know how far you go
+
+            _mashCounter = 0;
+        }
     }
 
     private void Update()
