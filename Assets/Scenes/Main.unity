@@ -2062,6 +2062,7 @@ MonoBehaviour:
   _info: {fileID: 11400000, guid: 5e6824596467fdc48b9aeb75f9adb692, type: 2}
   _gameOverPanel: {fileID: 947719402}
   _descriptionText: {fileID: 2119094986}
+  _scoreText: {fileID: 243614844}
 --- !u!114 &964986799
 MonoBehaviour:
   m_ObjectHideFlags: 0

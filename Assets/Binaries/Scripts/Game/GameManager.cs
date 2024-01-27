@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _descriptionText;
+    [SerializeField]
+    private TMP_Text _scoreText;
 
     public GameInfo GameInfo => _info;
 
