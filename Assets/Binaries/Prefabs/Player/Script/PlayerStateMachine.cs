@@ -84,17 +84,20 @@ public class PlayerStateMachine : MonoBehaviour
     public void StunAndThrow(Vector3 dir) => StartCoroutine(StunAndThrowCoroutine(dir));
     private IEnumerator StunAndThrowCoroutine(Vector3 dir)
     {
-        _canMove = false;
-        _targetDist = -1f;
-        _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
+        if (_canMove)
+        {
+            _canMove = false;
+            _targetDist = -1f;
+            _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
 
-        _rb.velocity = Vector3.zero;
-        dir.y = 0f;
-        _rb.AddForce(dir.normalized * _info.AttackForce, ForceMode.Impulse);
+            dir.y = 0f;
+            Debug.Log(dir.normalized * _info.AttackForce);
+            _rb.AddForce(dir.normalized * _info.AttackForce, ForceMode.Impulse);
 
-        yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f);
 
-        _canMove = true;
+            _canMove = true;
+        }
     }
 
     public void ResetHead()
