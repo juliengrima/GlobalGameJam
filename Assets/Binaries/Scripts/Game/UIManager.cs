@@ -8,11 +8,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { private set; get; }
 
-    public Action onGameBegin;
-    public static UIManager Instance;
+    public Action onGameBegin, onGameStop;
 
     public List<PlayerUIManager> playerInfos = new List<PlayerUIManager>();
-
 
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
@@ -50,16 +48,11 @@ public class UIManager : MonoBehaviour
 
     #region Countdown
 
-    public void StartCountDown()
-    {
-        StartCoroutine(StartCountdown());
-        onGameStart?.Invoke();
-    }
-
-    IEnumerator StartCountdown()
-
+  
+    public IEnumerator StartCountdown()
     {
         int countdownTime = GameManager.Instance.GameInfo.CountdownDuration;
+        onGameBegin?.Invoke();
 
         while (countdownTime > 0)
         {

@@ -11,9 +11,7 @@ public class ItemSpawner : MonoBehaviour
     private void Start()
     {
         //For testing item spawning
-        //StartCoroutine(CoroutinesList.SpawnGameObjectInList(GetComponent<Collider>(), itemsToSpawn, Helpers.GetRandomInt(0, itemsToSpawn.Count), spawnDelay, bufferDistance));
-        
-        UIManager.onGameStart += SpawnItem;
+        //StartCoroutine(CoroutinesList.SpawnGameObjectInList(GetComponent<Collider>(), itemsToSpawn, Helpers.GetRandomInt(0, itemsToSpawn.Count), spawnDelay, bufferDistance
     }
 
     public void SpawnItem()
