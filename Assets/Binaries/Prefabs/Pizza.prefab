@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603258926051174970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.5000002, z: 0.000000059604645}
+  m_LocalPosition: {x: 1.25, y: 0.75000036, z: 0.00000008940697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410356322658579768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.5000002, z: 0.000000059604645}
+  m_LocalPosition: {x: 1.25, y: 0.75000036, z: 0.00000008940697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -175,10 +175,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2136818376302063614}
+  - component: {fileID: 6343525559777342146}
   - component: {fileID: -365112721374554371}
-  - component: {fileID: -889419702576519141}
   - component: {fileID: 3269244385332095233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pizza
   m_TagString: Pizza
   m_Icon: {fileID: 0}
@@ -205,19 +205,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-365112721374554371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3361181825237044438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc40418480b7c0248aef5c08251e49d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!135 &-889419702576519141
+--- !u!135 &6343525559777342146
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,12 +220,24 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1.13
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-365112721374554371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3361181825237044438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc40418480b7c0248aef5c08251e49d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3269244385332095233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8a0b70f8dacf048b0edf560cff0df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 30
 --- !u!1 &4165221023880227378
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4165221023880227378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.5000002, z: 0.000000059604645}
+  m_LocalPosition: {x: 1.25, y: 0.75000036, z: 0.00000008940697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -359,7 +360,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5868916486377744696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.50000006, z: 0.000000059604645}
+  m_LocalPosition: {x: 1.25, y: 0.7500001, z: 0.00000008940697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -442,7 +443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6609432079234573936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.5000002, z: 0.000000059604645}
+  m_LocalPosition: {x: 1.25, y: 0.75000036, z: 0.00000008940697}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
