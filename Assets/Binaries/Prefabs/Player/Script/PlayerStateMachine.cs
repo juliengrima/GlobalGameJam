@@ -22,6 +22,9 @@ public class PlayerStateMachine : MonoBehaviour
     private int _id;
 
     private int _mashCounter;
+    private float _currDist, _targetDist = -1f;
+
+    private Vector3 _initialOffset;
     #endregion
 
     public void OnItemTrigger(GameObject go)
@@ -56,12 +59,14 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void OnHit(InputAction.CallbackContext value)
     {
-        if (value.performed && GameManager.Instance.CanPlay)
+        if (value.performed && GameManager.Instance.CanPlay && _mashCounter > 0)
         {
             var hit01 = _mashCounter / (float)_info.MaxHitCount;
             var distance = _info.DistanceCurve.Evaluate(hit01) * _info.MaxDistance;
+            _initialOffset = _targetBone.position - _mainParent.transform.position;
 
-            Debug.Log($"Distance reached: {distance}");
+            _currDist = 0f;
+            _targetDist = distance;
             // TODO: Throw head here! Use distance to know how far you go
 
             _mashCounter = 0;
@@ -72,6 +77,16 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (GameManager.Instance.CanPlay)
         {
+            if (_currDist < _targetDist)
+            {
+                _currDist += Time.deltaTime;
+                _targetBone.transform.position = _mainParent.transform.position + _initialOffset + _mainParent.transform.forward * _currDist;
+                if (_currDist >= _targetDist)
+                {
+                    Debug.Break();
+                }
+            }
+
             _entityMove.Moving(_dir);
         }
     }
