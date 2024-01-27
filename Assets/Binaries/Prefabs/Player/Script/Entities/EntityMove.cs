@@ -98,13 +98,17 @@ public class EntityMove : MonoBehaviour
         {
             float step = _info.RotationSpeed * Time.deltaTime;
 
-            var dir = moving * _info.LinearSpeed * Time.deltaTime;
             _rb.transform.Rotate(0f, moving.x * step, 0f);
+            var dir = moving.y * _info.LinearSpeed * Time.deltaTime * _rb.transform.forward;
 
-            _rb.velocity = new Vector3(dir.x * _rb.transform.forward.x, _rb.velocity.y, dir.y * _rb.transform.forward.z);
-
-            Debug.Log($"Velocite rb : {_rb.velocity}");
+            _rb.velocity = new Vector3(dir.x, _rb.velocity.y, dir.z);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(_rb.transform.position, _rb.transform.position + _rb.transform.forward * 3f);
     }
 
     public void Jump(InputActionReference _jump)
