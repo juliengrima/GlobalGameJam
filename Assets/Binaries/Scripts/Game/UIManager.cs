@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         timer = GameManager.Instance.GameInfo.GameDuration;
+        Invoke("StartCountDown", 10f); // For Test Only
     }
 
     private void Update()

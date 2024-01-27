@@ -19,6 +19,7 @@ public class PlayerUIManager : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.GameInfo.MaxItemCount; i++)
         {
             _points.Add(Instantiate(_pointPrefab, _pointContainer));
+            _points[i].SetActive(false);
         }
     }
 
