@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,8 @@ public class PlayerStateMachine : MonoBehaviour
     private float _currDist, _targetDist = -1f;
 
     private Vector3 _initialOffset;
+
+    private bool _canMove = true;
 
     public float TotalDistance { private set; get; }
     #endregion
@@ -78,23 +81,41 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
+    public void StunAndThrow(Vector3 dir) => StartCoroutine(StunAndThrowCoroutine(dir));
+    private IEnumerator StunAndThrowCoroutine(Vector3 dir)
+    {
+        _canMove = false;
+        _targetDist = -1f;
+        _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
+
+        _rb.velocity = Vector3.zero;
+        _rb.AddForce(dir.normalized * 10f, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(2f);
+
+        _canMove = true;
+    }
+
     private void Update()
     {
         if (GameManager.Instance.CanPlay)
         {
             TotalDistance += _rb.velocity.magnitude * Time.deltaTime;
 
-            if (_currDist < _targetDist)
+            if (_canMove)
             {
-                _currDist += Time.deltaTime * _info.HeadSpeed;
-                _targetBone.transform.position = _mainParent.transform.position + _initialOffset + _mainParent.transform.forward * _currDist * EventManager.Instance.TimeMultiplier;
-                if (_currDist >= _targetDist)
+                if (_currDist < _targetDist)
                 {
-                    _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
+                    _currDist += Time.deltaTime * _info.HeadSpeed;
+                    _targetBone.transform.position = _mainParent.transform.position + _initialOffset + _mainParent.transform.forward * _currDist * EventManager.Instance.TimeMultiplier;
+                    if (_currDist >= _targetDist)
+                    {
+                        _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
+                    }
                 }
-            }
 
-            _entityMove.Moving(_dir);
+                _entityMove.Moving(_dir);
+            }
         }
     }
 

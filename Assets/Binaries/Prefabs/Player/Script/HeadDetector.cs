@@ -14,7 +14,7 @@ public class HeadDetector : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            Debug.Log("hitting a player");
+            other.GetComponentInChildren<PlayerStateMachine>().StunAndThrow(other.transform.position - transform.position);
         }
     }
 }
