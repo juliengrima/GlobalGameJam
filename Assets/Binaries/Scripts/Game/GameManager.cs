@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,6 +42,10 @@ public class GameManager : MonoBehaviour
         CanPlay = false;
 
         _descriptionText.text = $"Player {winnerId + 1} win!";
+
+        var pData = PlayerManager.Instance.GetAllComponents<PlayerStateMachine>();
+
+        _scoreText.text = $"Audience Fun Score: {pData.Sum(x => x.TotalDistance) / pData.Count() / UIManager.Instance.Elapsed * 100f}%\nLess fun player: {pData.OrderBy(x => x.TotalDistance).First().Id}";
         _gameOverPanel.SetActive(true);
     }
 }

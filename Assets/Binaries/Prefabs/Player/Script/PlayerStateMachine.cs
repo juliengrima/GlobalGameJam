@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerStateMachine : MonoBehaviour
 {
     #region Champs
+    [SerializeField] private Rigidbody _rb;
     [SerializeField] private PlayerInfo _info;
     [SerializeField] private GameObject _mainParent;
     [SerializeField] private Transform _targetBone;
@@ -20,6 +21,7 @@ public class PlayerStateMachine : MonoBehaviour
     private bool _isInit;
 
     private int _id;
+    public int Id => _id;
 
     private int _mashCounter;
     private float _currDist, _targetDist = -1f;
@@ -80,6 +82,8 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (GameManager.Instance.CanPlay)
         {
+            TotalDistance += _rb.velocity.magnitude * Time.deltaTime;
+
             if (_currDist < _targetDist)
             {
                 _currDist += Time.deltaTime * _info.HeadSpeed;

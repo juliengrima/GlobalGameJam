@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e161ff4e5d9432abc454afbc91389d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rb: {fileID: 4688974532856418225}
   _info: {fileID: 11400000, guid: 52815df20664e054c8602ef000200d5d, type: 2}
   _mainParent: {fileID: 5279941806694501375}
   _targetBone: {fileID: 6168374055009799967}
