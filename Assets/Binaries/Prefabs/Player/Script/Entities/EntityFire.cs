@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 
-public class CoroutinesList : MonoBehaviour
+public class EntityFire : MonoBehaviour
 {
     #region Champs
     PlayerState _currentState;

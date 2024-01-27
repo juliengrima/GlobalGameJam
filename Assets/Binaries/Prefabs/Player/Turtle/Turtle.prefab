@@ -781,6 +781,7 @@ GameObject:
   - component: {fileID: 552386336548316528}
   - component: {fileID: 6827414150234752235}
   - component: {fileID: 7643723986742395020}
+  - component: {fileID: -7239948125207729618}
   m_Layer: 0
   m_Name: Turtle
   m_TagString: Untagged
@@ -878,6 +879,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.4258463
   m_Center: {x: 0, y: -0.20440947, z: 0}
+--- !u!95 &-7239948125207729618
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654448385624893251}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c85ed87d175204f7a9b91250bef6d206, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4368704918504249146
 GameObject:
   m_ObjectHideFlags: 0
