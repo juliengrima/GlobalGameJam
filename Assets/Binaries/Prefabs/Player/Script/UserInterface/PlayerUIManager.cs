@@ -14,7 +14,7 @@ public class PlayerUIManager : MonoBehaviour
 
     private readonly List<GameObject> _points = new();
 
-    private int _score;
+    public int _score {  get; set; }
 
     private void Start()
     {
@@ -27,13 +27,17 @@ public class PlayerUIManager : MonoBehaviour
 
     public void AddScore()
     {
-        if (_score >= 3)
+        _score++;
+
+        if (_score >= GameManager.Instance.GameInfo.MaxItemCount)
         {
             _score = GameManager.Instance.GameInfo.MaxItemCount;
+            UIManager.Instance.onRoundEnd?.Invoke();
+
+            //UIManager.Instance.SetWinner();
         }
         else
         {
-            _score++;
             _points[_score].SetActive(true);
         }
     }
