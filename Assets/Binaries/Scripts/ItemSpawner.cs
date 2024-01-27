@@ -21,12 +21,12 @@ public class ItemSpawner : MonoBehaviour
     {
         if (collider != null)
         {
-            Vector3 spawnPoint = Helpers.GetRandomPointInBounds(collider.bounds);
+            Vector3 previousSpawnPosition = list[index].transform.position;
+            float minDistance = 10f; // Minimum distance from the previous spawn position
 
-            GameObject newItem = Instantiate(list[index], spawnPoint, Quaternion.identity);
+            Vector3 randomPoint = Helpers.GetRandomPointInBounds(collider.bounds, previousSpawnPosition, minDistance);
 
-            GameObject lastItemSpawned = newItem;
-
+            GameObject newItem = Instantiate(list[index], randomPoint, Quaternion.identity);
         }
         else
         {

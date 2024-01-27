@@ -20,16 +20,21 @@ namespace Manager
 
         internal static IEnumerator SpawnGameObjectInList(Collider collider, List<GameObject> list, int index, float delay)
         {
+            GameObject lastItemSpawned = null;
+
             while (true)
             {
                 if (collider != null)
                 {
-                    Vector3 spawnPoint = Helpers.GetRandomPointInBounds(collider.bounds);
-                    
-                    GameObject newItem = Instantiate(list[index], spawnPoint, Quaternion.identity);
-                    
-                    GameObject lastItemSpawned = newItem;
+                    Vector3 previousSpawnPosition = lastItemSpawned != null ? lastItemSpawned.transform.position : Vector3.zero;
+                    float minDistance = 5f;
 
+                    Vector3 randomPoint = Helpers.GetRandomPointInBounds(collider.bounds, previousSpawnPosition, minDistance);
+
+                    GameObject newItem = Instantiate(list[index], randomPoint, Quaternion.identity);
+                    lastItemSpawned = newItem;
+
+                    // Consider if you want to destroy the previous item after a certain time
                     Destroy(lastItemSpawned, 0.8f);
                 }
                 else
@@ -38,8 +43,8 @@ namespace Manager
                 }
 
                 yield return new WaitForSeconds(delay);
+
             }
-            
         }
         #endregion
     }
