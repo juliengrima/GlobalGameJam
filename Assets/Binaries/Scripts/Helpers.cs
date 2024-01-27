@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Helpers : MonoBehaviour
 {
-    public static Vector3 GetRandomPointInBounds(Bounds bounds, Vector3 previousSpawnPosition, float minDistance)
+    public static Vector3 GetRandomPointInBounds(Bounds bounds, Vector3 previousSpawnPosition, float minDistance,float bufferDistance)
     {
-        float bufferDistance = 0.1f;
-
-
         Vector3 randomPoint = Vector3.zero;
         do
         {
@@ -20,5 +17,11 @@ public class Helpers : MonoBehaviour
         } while (Vector3.Distance(randomPoint, previousSpawnPosition) < minDistance);
 
         return randomPoint;
+    }
+
+    public static int GetRandomInt(int min, int max)
+    {
+        int rand = UnityEngine.Random.Range(0, max);
+        return rand;
     }
 }

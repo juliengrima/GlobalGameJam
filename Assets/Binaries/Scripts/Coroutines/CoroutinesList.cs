@@ -18,7 +18,7 @@ namespace Manager
             throw new NotImplementedException();
         }
 
-        internal static IEnumerator SpawnGameObjectInList(Collider collider, List<GameObject> list, int index, float delay)
+        internal static IEnumerator SpawnGameObjectInList(Collider collider, List<GameObject> list, int index, float delay, float bufferDistance)
         {
             GameObject lastItemSpawned = null;
 
@@ -29,7 +29,7 @@ namespace Manager
                     Vector3 previousSpawnPosition = lastItemSpawned != null ? lastItemSpawned.transform.position : Vector3.zero;
                     float minDistance = 5f;
 
-                    Vector3 randomPoint = Helpers.GetRandomPointInBounds(collider.bounds, previousSpawnPosition, minDistance);
+                    Vector3 randomPoint = Helpers.GetRandomPointInBounds(collider.bounds, previousSpawnPosition, minDistance, bufferDistance);
 
                     GameObject newItem = Instantiate(list[index], randomPoint, Quaternion.identity);
                     lastItemSpawned = newItem;
