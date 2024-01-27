@@ -85,7 +85,10 @@ public class EntityMove : MonoBehaviour
         var targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
         var angle = Mathf.SmoothDampAngle(_controller.transform.eulerAngles.y, targetAngle, ref _currentVelocity, _smoothTime);
 
-        //_playerStateMachine.Move
+       if (_playerStateMachine.Move.action.IsPressed())
+        {
+
+        }
 
         _controller.transform.rotation = Quaternion.Euler(0, angle, 0);
 

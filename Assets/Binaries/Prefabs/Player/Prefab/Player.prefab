@@ -486,7 +486,6 @@ MonoBehaviour:
   _jumpHeight: 1
   _rotation: 1
   _rotationSpeed: 1
-  _rotationThreshold: 1
   _smoothTime: 0.05
   _gravity: -9.81
 --- !u!114 &2350426417696592542
@@ -618,7 +617,7 @@ PrefabInstance:
     - target: {fileID: 3806804261012147802, guid: 3c5bb77bdea5f44a592b15a42ccfc210,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2434
+      value: 2437
       objectReference: {fileID: 0}
     - target: {fileID: 4368704918504249146, guid: 3c5bb77bdea5f44a592b15a42ccfc210,
         type: 3}
