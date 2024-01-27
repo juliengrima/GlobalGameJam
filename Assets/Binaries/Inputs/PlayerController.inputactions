@@ -9,7 +9,7 @@
                     "name": "MOVE",
                     "type": "Value",
                     "id": "52b74712-ef6c-4f53-a529-90ffea5f8d89",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Vector3",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

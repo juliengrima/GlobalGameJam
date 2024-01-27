@@ -16,6 +16,8 @@ public class EntityMove : MonoBehaviour
     [SerializeField] CharacterController _controller;
     [SerializeField] PlayerStateMachine _playerStateMachine;
     [SerializeField] Grounded _grounded;
+    //[SerializeField] HealthCount _health;
+    //[SerializeField] EnduanceWheel _stamina;
     [Header("Audio_Component")]
     [SerializeField] AudioSource _source;
     [Header("coroutines_Component")]
@@ -38,8 +40,9 @@ public class EntityMove : MonoBehaviour
     public float Gravity { get => _gravity; set => _gravity = value; }
     public AudioSource Source { get => _source; set => _source = value; }
     #endregion
-    #region Default Informations
-    void Reset()
+    #region Unity LifeCycle
+    // Start is called before the first frame update
+    private void Reset()
     {
         _controller = transform.parent.GetComponentInChildren<CharacterController>();
 
@@ -48,52 +51,77 @@ public class EntityMove : MonoBehaviour
         _jumpHeight = 1f;
         //_jumpDamage = 1;
     }
-    #endregion
-    #region Unity LifeCycle
-    // Update is called once per frame
+
     void Update()
     {
+        //IsGrounded();
         Moving(_direction);
-        IsGrounded();
+        Jump(_playerStateMachine.Jump);
+        //Fall();
     }
     #endregion
     #region Methods
+    // Moving method
     public void Moving(Vector2 moving)
     {
-        // Vector2 moving = PlayerstateMachine Vector2 _dir
-        //_oldDirection = moving;
-        _direction = moving;
-        Vector3 move = new Vector3(_direction.x, 0, _direction.y);
-        move = _controller.transform.TransformDirection(move);
+        groundedPlayer = _controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
 
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         _controller.Move(move * Time.deltaTime * _speed);
 
-        //// Add JumpForce if Jump is pressed
-        //if (_IsJumping && groundedPlayer)
-        //{
-        //    playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.0f * _gravity);
-        //    // Give impulsion and multipli gravity & force to jumpheight
-        //}
+        if (move != Vector3.zero)
+        {
+            gameObject.transform.forward = move;
+        }
+
+        // Changes the height position of the player..
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.0f * _gravity);
+        }
+
+        playerVelocity.y += _gravity * Time.deltaTime;
         _controller.Move(playerVelocity * Time.deltaTime);
     }
 
+
+    public void Run(InputActionReference run)
+    {
+        _isRunning = run.action.IsPressed();
+    }
     public void Jump(InputActionReference _jump)
     {
         _IsJumping = _jump.action.WasPerformedThisFrame();
     }
 
-    void IsGrounded()
-    {
-        //groundedPlayer = _controller.isGrounded;
-        groundedPlayer = _grounded.IsGrounded;
-        if (groundedPlayer)
-        {
-            playerVelocity.y = 0f;
-        }
-        // Update gravity
-        playerVelocity.y += _gravity * Time.deltaTime;
-    }
+    // 
+    //private void Fall()
+    //{
+    //    var fall = playerVelocity.y += _controller.velocity.y * -3.0f * _gravity;
+
+    //    if (fall > 1f && groundedPlayer)
+    //    {
+    //        int jumpDamage = Convert.ToInt32(fall) * _jumpDamage;
+    //        _health.TakeDamage(jumpDamage);
+    //    }
+    //}
+
+    //void IsGrounded()
+    //{
+    //    //groundedPlayer = _controller.isGrounded;
+    //    groundedPlayer = _grounded.IsGrounded;
+    //    if (groundedPlayer)
+    //    {
+    //        playerVelocity.y = 0f;
+    //    }
+    //    // Update gravity
+    //    playerVelocity.y += _gravity * Time.deltaTime;
+    //}
     #endregion
     #region Coroutines
-    #endregion
+    #endregion 
 }
