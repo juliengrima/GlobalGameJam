@@ -1221,13 +1221,13 @@ MonoBehaviour:
   _onItemTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2100871107400820580}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 1034880950507596605}
+        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
+        m_MethodName: Eat
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
