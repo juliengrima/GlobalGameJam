@@ -770,6 +770,23 @@ PrefabInstance:
       propertyPath: m_text
       value: Credits
       objectReference: {fileID: 0}
+    - target: {fileID: 6072347054679995878, guid: 9f6fd5d8038b11e4ab9ce71776a855c0,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a781b32e700a03f46a5cdff35b5db2b9,
+        type: 2}
+    - target: {fileID: 6072347054679995878, guid: 9f6fd5d8038b11e4ab9ce71776a855c0,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4167734874002909985, guid: a781b32e700a03f46a5cdff35b5db2b9,
+        type: 2}
+    - target: {fileID: 6072347054679995878, guid: 9f6fd5d8038b11e4ab9ce71776a855c0,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6618209449317640248, guid: 9f6fd5d8038b11e4ab9ce71776a855c0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1715,10 +1732,24 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ajoutez ici quelques instructions sur comment jouer
+  m_text: 'Eat all the food you can faster than the others!
+
+
+    Move: WASD / Left
+    Stick
+
+    Charge Attack: Left Click / South Gamepad Button
+
+    Launch Attack:
+    Right Click / Right Trigger
+
+
+    Use your attack to push the other players and
+    grab the food before them!'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a781b32e700a03f46a5cdff35b5db2b9, type: 2}
+  m_sharedMaterial: {fileID: -4167734874002909985, guid: a781b32e700a03f46a5cdff35b5db2b9,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1852,8 +1883,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: INSTRUCTIONS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a781b32e700a03f46a5cdff35b5db2b9, type: 2}
+  m_sharedMaterial: {fileID: -4167734874002909985, guid: a781b32e700a03f46a5cdff35b5db2b9,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1993,10 +2025,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Title
+  m_text: Turtle's Throttle
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a781b32e700a03f46a5cdff35b5db2b9, type: 2}
+  m_sharedMaterial: {fileID: -4167734874002909985, guid: a781b32e700a03f46a5cdff35b5db2b9,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2095,6 +2128,28 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3176617661631737931, guid: 73e1c71f5fc060f4888d992406ac47e1,
+        type: 3}
+      propertyPath: m_text
+      value: "3D:\nH\xE9ole\nVladarducal\n\nAudio:\nPeter Barn\n\nProgramming:\nBambi\nKodatsu\nZirk"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176617661631737931, guid: 73e1c71f5fc060f4888d992406ac47e1,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a781b32e700a03f46a5cdff35b5db2b9,
+        type: 2}
+    - target: {fileID: 3176617661631737931, guid: 73e1c71f5fc060f4888d992406ac47e1,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4167734874002909985, guid: a781b32e700a03f46a5cdff35b5db2b9,
+        type: 2}
+    - target: {fileID: 3176617661631737931, guid: 73e1c71f5fc060f4888d992406ac47e1,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3245236063968001802, guid: 73e1c71f5fc060f4888d992406ac47e1,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -2113,12 +2168,12 @@ PrefabInstance:
     - target: {fileID: 3857519904215961249, guid: 73e1c71f5fc060f4888d992406ac47e1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1742.9999
+      value: 1743
       objectReference: {fileID: 0}
     - target: {fileID: 3857519904215961249, guid: 73e1c71f5fc060f4888d992406ac47e1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 891.49994
+      value: 891.5
       objectReference: {fileID: 0}
     - target: {fileID: 3857519904215961249, guid: 73e1c71f5fc060f4888d992406ac47e1,
         type: 3}
@@ -2169,6 +2224,23 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345795492879748111, guid: 73e1c71f5fc060f4888d992406ac47e1,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a781b32e700a03f46a5cdff35b5db2b9,
+        type: 2}
+    - target: {fileID: 6345795492879748111, guid: 73e1c71f5fc060f4888d992406ac47e1,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4167734874002909985, guid: a781b32e700a03f46a5cdff35b5db2b9,
+        type: 2}
+    - target: {fileID: 6345795492879748111, guid: 73e1c71f5fc060f4888d992406ac47e1,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7061501731362282015, guid: 73e1c71f5fc060f4888d992406ac47e1,
         type: 3}
@@ -2444,6 +2516,23 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280575389789189270, guid: d7e1c272529866d448f99b86770b8fbb,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a781b32e700a03f46a5cdff35b5db2b9,
+        type: 2}
+    - target: {fileID: 2280575389789189270, guid: d7e1c272529866d448f99b86770b8fbb,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4167734874002909985, guid: a781b32e700a03f46a5cdff35b5db2b9,
+        type: 2}
+    - target: {fileID: 2280575389789189270, guid: d7e1c272529866d448f99b86770b8fbb,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4103085141919786829, guid: d7e1c272529866d448f99b86770b8fbb,
         type: 3}
