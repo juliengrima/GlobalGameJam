@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
 
     internal void UpdatePlayerInfo(int _id)
     {
-        PlayerManager.Instance.ResetPlayerPosition();
+        //PlayerManager.Instance.ResetPlayerPosition();
         playerInfos[_id].AddScore();
 
         foreach (var player in playerInfos)
