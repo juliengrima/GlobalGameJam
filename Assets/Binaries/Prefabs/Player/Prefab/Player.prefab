@@ -52,6 +52,9 @@ MonoBehaviour:
   _entityMove: {fileID: 4683729569524586756}
   _animator: {fileID: 368631072293752527}
   _powerupEat: {fileID: 8300000, guid: 192c6adf5e9658d4987193f154a0af97, type: 3}
+  _hits:
+  - {fileID: 8300000, guid: 7b674eeb4a925de4dae543ee70b59ecf, type: 3}
+  - {fileID: 8300000, guid: 4b81c4ffa97f7c14c896336c1dcb72a9, type: 3}
 --- !u!1 &5000461983223439856
 GameObject:
   m_ObjectHideFlags: 0

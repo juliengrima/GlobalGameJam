@@ -13,6 +13,9 @@ public class EventManager : MonoBehaviour
     [SerializeField]
     private TMP_Text _title, _description;
 
+    [SerializeField]
+    private AudioClip _eventSfx;
+
     public bool AreKeysInverted { private set; get; }
     public float TimeMultiplier { private set; get; } = 1f;
 
@@ -48,6 +51,7 @@ public class EventManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(Random.Range(GameManager.Instance.GameInfo.EventInterval.Min, GameManager.Instance.GameInfo.EventInterval.Max));
 
+                AudioManager.Instance.PlayOneShot(_eventSfx);
                 var evt = Events[Random.Range(0, Events.Length)];
                 _eventContainer.SetActive(true);
                 evt.Enable(_title, _description);

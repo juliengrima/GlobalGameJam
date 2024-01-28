@@ -17,6 +17,7 @@ public class PlayerStateMachine : MonoBehaviour
     //[SerializeField] Animation _animation;
     [Header("Player_Audios")]
     [SerializeField] private AudioClip _powerupEat;
+    [SerializeField] private AudioClip[] _hits;
     //Private Fields
     bool _death;
     Vector2 _dir;
@@ -42,7 +43,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Eat()
     {
-        AudioManager.Instance.PlayOneShot(_powerupEat);
+        AudioManager.Instance.PlayOneShot(_powerupEat, .4f);
 
 
         //PlayerManager.Instance.ResetPlayerPosition();
@@ -95,6 +96,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (_canMove)
         {
+            AudioManager.Instance.PlayOneShot(_hits[Random.Range(0, _hits.Length)], 1f);
             _animator.SetBool("IsStunned", true);
             _canMove = false;
             _targetDist = -1f;

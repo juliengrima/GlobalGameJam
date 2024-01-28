@@ -2246,6 +2246,7 @@ MonoBehaviour:
   _eventContainer: {fileID: 1261589426}
   _title: {fileID: 198563998}
   _description: {fileID: 88820341}
+  _eventSfx: {fileID: 8300000, guid: a77585a0f903eb942976cfd3e81215a8, type: 3}
 --- !u!114 &964986800
 MonoBehaviour:
   m_ObjectHideFlags: 0
