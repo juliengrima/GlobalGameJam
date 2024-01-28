@@ -59,7 +59,12 @@ public class ItemSpawner : MonoBehaviour
 
             Vector3 previousSpawnPosition = _lastItemSpawned != null ? _lastItemSpawned.transform.position : Vector3.zero;
 
-            Vector3 randomPoint = Helpers.GetRandomPointInBounds(collider.bounds, previousSpawnPosition, minDistance, bufferDistance);
+            Vector3 randomPoint;
+            do
+            {
+                randomPoint = Helpers.GetRandomPointInBounds(collider.bounds, previousSpawnPosition, minDistance, bufferDistance);
+
+            } while (Physics.OverlapSphereNonAlloc(randomPoint, 1f, null, 1 << 6) > 0);
 
             GameObject newItem = Instantiate(list[index], randomPoint, Quaternion.identity);
             
