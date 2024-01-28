@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2460630501853389682}
   - component: {fileID: 8953578400838145630}
+  - component: {fileID: 4911250421596067548}
   m_Layer: 0
   m_Name: Item Spawner
   m_TagString: Untagged
@@ -47,3 +48,26 @@ MonoBehaviour:
   itemsToSpawn:
   - {fileID: 4995320857942950880, guid: 397d74cd533c4ca4e846504c4950562e, type: 3}
   spawnDelay: 0.5
+--- !u!136 &4911250421596067548
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2261715795028098365}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
