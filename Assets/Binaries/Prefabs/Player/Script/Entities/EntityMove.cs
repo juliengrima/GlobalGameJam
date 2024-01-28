@@ -66,12 +66,6 @@ public class EntityMove : MonoBehaviour
         Instance = this;
     }
 
-    void Update()
-    {
-        //IsGrounded();
-        Moving(_direction);
-        //Fall();
-    }
     #endregion
     #region Methods
     // Moving method
