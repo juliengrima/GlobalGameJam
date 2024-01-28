@@ -1,9 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class Item : MonoBehaviour
+public class Bonus : Item
 {
-    public UnityEvent OnDestroyEvt { get; } = new();
+    private void Start()
+    {
+        Destroy(gameObject, 5f);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,10 +16,5 @@ public class Item : MonoBehaviour
             other.GetComponent<ColliderReceptor>().InvokeItemTrigger(other.gameObject);
             Destroy(gameObject);
         }
-    }
-
-    private void OnDestroy()
-    {
-        OnDestroyEvt.Invoke();
     }
 }

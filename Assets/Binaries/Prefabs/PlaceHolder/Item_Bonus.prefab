@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7188546014342544445}
   - component: {fileID: 8366568556495861486}
   - component: {fileID: 5000092726192651374}
-  - component: {fileID: 1434249636513241026}
+  - component: {fileID: -1287538988248710520}
   m_Layer: 7
-  m_Name: Item_PlaceHolder_A
-  m_TagString: Untagged
+  m_Name: Item_Bonus
+  m_TagString: Bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ac568a17cb747c649bce935fd4becb8b, type: 2}
+  - {fileID: 2100000, guid: 0768995c35ccfaf44ad1087ea88ed3a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1434249636513241026
+--- !u!114 &-1287538988248710520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,22 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4995320857942950880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc40418480b7c0248aef5c08251e49d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8a0b70f8dacf048b0edf560cff0df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroyEvt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8953578400838145630, guid: cfdabb7fb158d4a4ca0f42e8174c4c56,
-          type: 3}
-        m_TargetAssemblyTypeName: ItemSpawner, Assembly-CSharp
-        m_MethodName: SpawnItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
