@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     private List<ColorbyID> playersIDs = new List<ColorbyID>();
 
+    [SerializeField] private AudioClip _countDown;
+
     [System.Serializable]
     public class ColorbyID
     {
@@ -96,6 +98,7 @@ public class UIManager : MonoBehaviour
   
     IEnumerator Countdown()
     {
+        AudioManager.Instance.PlayOneShot(_countDown);
         int countdownTime = GameManager.Instance.GameInfo.CountdownDuration;
 
         while (countdownTime > 0)
