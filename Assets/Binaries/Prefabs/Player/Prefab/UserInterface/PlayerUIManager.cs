@@ -32,7 +32,6 @@ public class PlayerUIManager : MonoBehaviour
         if (_score >= GameManager.Instance.GameInfo.MaxItemCount)
         {
             _score = GameManager.Instance.GameInfo.MaxItemCount;
-            UIManager.Instance.onRoundEnd?.Invoke();
 
             //UIManager.Instance.SetWinner();
         }

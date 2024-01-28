@@ -81,6 +81,11 @@ public class UIManager : MonoBehaviour
         {
             if (player._score == GameManager.Instance.GameInfo.MaxItemCount)
             {
+                onRoundEnd?.Invoke();
+
+                Debug.Log(playersIDs[_id].iD);
+                Debug.Log(playersIDs[_id].color)
+                    ;
                 SetWinner(playersIDs[_id].color);
             }
         }
@@ -88,7 +93,7 @@ public class UIManager : MonoBehaviour
 
     public void SetWinner(string id)
     {
-        winText.text = "Player " + id + " win!";
+        winText.text = $"Player { id }  win!";
     }
     #endregion
 

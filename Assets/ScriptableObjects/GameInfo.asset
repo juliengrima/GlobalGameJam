@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e866a615718bd44d97d5818fe0474f1, type: 3}
   m_Name: GameInfo
   m_EditorClassIdentifier: 
-  MaxItemCount: 3
+  MaxItemCount: 4
   CountdownDuration: 3
   GameDuration: 180
-  MaxNumberRound: 3
+  MaxNumberRound: 4
   MinPlayerRequirement: 0
   EventInterval:
     Min: 5
@@ -23,4 +23,3 @@ MonoBehaviour:
   EventDuration:
     Min: 3
     Max: 5
-  HeadSpeed: 20
