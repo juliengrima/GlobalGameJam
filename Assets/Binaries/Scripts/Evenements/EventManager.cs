@@ -16,6 +16,9 @@ public class EventManager : MonoBehaviour
     [SerializeField]
     private AudioClip _eventSfx;
 
+    [SerializeField]
+    private AudioClip _confusion, _frenzyTimes, _randomizer, _comeBackBaby, _newTarget;
+
     public bool AreKeysInverted { private set; get; }
     public float TimeMultiplier { private set; get; } = 1f;
 
@@ -25,11 +28,11 @@ public class EventManager : MonoBehaviour
 
         Events = new[]
         {
-            //new EventInfo("Confusion", "All controls are inverted", () => { AreKeysInverted = true; }, () => { AreKeysInverted = false; }),
-            //new EventInfo("Frenzy Times", "Increase everything speed", () => { TimeMultiplier = 3f; }, () => { TimeMultiplier = 1f; }),
-            //new EventInfo("Randomizer", "All positions are randomized", RandomizePos, () => { }),
-            //new EventInfo("Come Back Baby", "All players when max points get thrown around", BlueShell, () => { }),
-            new EventInfo("New Target", "Change the objective location", ItemSpawner.Instance.DestroyLast, () => { })
+            new EventInfo("Confusion", "All controls are inverted", () => { AreKeysInverted = true; }, () => { AreKeysInverted = false; }, _confusion),
+            new EventInfo("Frenzy Times", "Increase everything speed", () => { TimeMultiplier = 3f; }, () => { TimeMultiplier = 1f; }, _frenzyTimes),
+            new EventInfo("Randomizer", "All positions are randomized", RandomizePos, () => { }, _randomizer),
+            new EventInfo("Come Back Baby", "All players when max points get thrown around", BlueShell, () => { }, _comeBackBaby),
+            new EventInfo("What's Going On", "Change the objective location", ItemSpawner.Instance.DestroyLast, () => { }, _newTarget)
         };
 
         StartCoroutine(RunEvents());
@@ -65,8 +68,8 @@ public class EventManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(Random.Range(GameManager.Instance.GameInfo.EventInterval.Min, GameManager.Instance.GameInfo.EventInterval.Max));
 
-                AudioManager.Instance.PlayOneShot(_eventSfx);
                 var evt = Events[Random.Range(0, Events.Length)];
+                AudioManager.Instance.PlayOneShot(evt.Clip, 1f);
                 _eventContainer.SetActive(true);
                 evt.Enable(_title, _description);
 
@@ -86,16 +89,20 @@ public class EventManager : MonoBehaviour
 
 public class EventInfo
 {
-    public EventInfo(string name, string description, System.Action onEnable, System.Action onDisable)
+    public EventInfo(string name, string description, System.Action onEnable, System.Action onDisable, AudioClip clip)
     {
         _name = name;
         _description = description;
         _onEnable = onEnable;
         _onDisable = onDisable;
+
+        Clip = clip;
     }
 
     private string _name, _description;
     private System.Action _onEnable, _onDisable;
+
+    public AudioClip Clip { private set; get; }
 
     public void Enable(TMP_Text title, TMP_Text description)
     {
