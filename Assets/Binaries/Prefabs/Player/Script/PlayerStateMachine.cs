@@ -29,6 +29,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void OnItemTrigger(GameObject go)
     {
+        Debug.Log("");
         Eat();
     }
 

@@ -11,6 +11,7 @@ public class HeadDetector : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
+            Debug.Log("");
             _player.OnItemTrigger(other.gameObject);
             Destroy(other.gameObject);
         }

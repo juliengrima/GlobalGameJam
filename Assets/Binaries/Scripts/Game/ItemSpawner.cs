@@ -10,14 +10,20 @@ public class ItemSpawner : MonoBehaviour
     private float bufferDistance = 0.1f;
     private GameObject _lastItemSpawned;
 
-    
+    public bool activateRandomSpawn = false;
+    public bool repeatSpawn = false;
+    public bool addEvent = false;
 
     private void Start()
     {
-        //For testing item spawning
-        //StartCoroutine(CoroutinesList.SpawnGameObjectInList(GetComponent<Collider>(), itemsToSpawn, Helpers.GetRandomInt(0, itemsToSpawn.Count), spawnDelay, bufferDistance
-        UIManager.Instance.onGameBegin += SpawnFirstItem;
-
+        if (repeatSpawn)
+        {
+            StartCoroutine(CoroutinesList.SpawnGameObjectInList(GetComponent<Collider>(), itemsToSpawn, Helpers.GetRandomInt(0, itemsToSpawn.Count), spawnDelay, bufferDistance));
+        }
+        else
+        {
+            UIManager.Instance.onGameBegin += SpawnFirstItem;
+        }
     }
 
     
@@ -33,16 +39,18 @@ public class ItemSpawner : MonoBehaviour
 
     void SpawnFirstItem(List<GameObject> list, int index)
     {
-        GameObject newItem = Instantiate(list[index], Vector3.zero, Quaternion.identity);
-
-        newItem.GetComponent<Item>().OnDestroyEvt.AddListener(SpawnNewItem);
+        GameObject newItem = Instantiate(list[index], transform.position, Quaternion.identity);
+        
+        if (addEvent)
+        {
+            newItem.GetComponent<Item>().OnDestroyEvt.AddListener(SpawnNewItem);
+        }
+        
         _lastItemSpawned = newItem;
     }
 
     void SpawnItem(Collider collider, List<GameObject> list, int index, float distance)
     {
-        GameObject _lastItemSpawned = null;
-
         if (collider != null)
         {
             float minDistance = 5f;
@@ -52,8 +60,11 @@ public class ItemSpawner : MonoBehaviour
             Vector3 randomPoint = Helpers.GetRandomPointInBounds(collider.bounds, previousSpawnPosition, minDistance, bufferDistance);
 
             GameObject newItem = Instantiate(list[index], randomPoint, Quaternion.identity);
-
-            newItem.GetComponent<Item>().OnDestroyEvt.AddListener(SpawnNewItem);
+            
+            if (addEvent)
+            {
+                newItem.GetComponent<Item>().OnDestroyEvt.AddListener(SpawnNewItem);
+            }
 
             _lastItemSpawned = newItem;
         }

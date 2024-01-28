@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("", other.gameObject);
             other.GetComponent<ColliderReceptor>().InvokeItemTrigger(other.gameObject);
             Destroy(gameObject);
         }
@@ -16,6 +17,9 @@ public class Item : MonoBehaviour
 
     private void OnDestroy()
     {
-        OnDestroyEvt.Invoke();
+        if (this.gameObject.scene.isLoaded)
+        {
+            OnDestroyEvt.Invoke();
+        }
     }
 }
