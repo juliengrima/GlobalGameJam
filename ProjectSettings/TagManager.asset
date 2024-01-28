@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - Wall
   - Item
+  - Prop
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player
   - Item
   - Head
-  - 
+  - Prop
   - 
   - 
   - 
