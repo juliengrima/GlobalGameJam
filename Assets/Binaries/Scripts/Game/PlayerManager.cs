@@ -52,7 +52,7 @@ public class PlayerManager : MonoBehaviour
         return index;
     }
 
-    public void ResetPlayerPosition()
+    /*public void ResetPlayerPosition()
     {
         for (int i = 0; i < _players.Count; i++)
         {
@@ -61,5 +61,5 @@ public class PlayerManager : MonoBehaviour
             _players[i].transform.position = _spawnPoints[index].position;
             _players[i].transform.rotation = _spawnPoints[index].rotation;
         }
-    }
+    }*/
 }

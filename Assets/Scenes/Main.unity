@@ -1482,6 +1482,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4370728116814962310, guid: 9e0c391c737c3d24ba03ca3e31d844c5,
+        type: 3}
+      propertyPath: winText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370728116814962310, guid: 9e0c391c737c3d24ba03ca3e31d844c5,
+        type: 3}
+      propertyPath: _countDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c196abb08f5e214d9ccc318c21075ad, type: 3}
+    - target: {fileID: 4370728116814962310, guid: 9e0c391c737c3d24ba03ca3e31d844c5,
+        type: 3}
+      propertyPath: onRoundEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370728116814962310, guid: 9e0c391c737c3d24ba03ca3e31d844c5,
+        type: 3}
+      propertyPath: onRoundEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370728116814962310, guid: 9e0c391c737c3d24ba03ca3e31d844c5,
+        type: 3}
+      propertyPath: onRoundEnd.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4450943064375598090, guid: 9e0c391c737c3d24ba03ca3e31d844c5,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2004,6 +2029,7 @@ GameObject:
   - component: {fileID: 964986797}
   - component: {fileID: 964986798}
   - component: {fileID: 964986799}
+  - component: {fileID: 964986800}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2131,6 +2157,19 @@ MonoBehaviour:
   _eventContainer: {fileID: 1261589426}
   _title: {fileID: 198563998}
   _description: {fileID: 88820341}
+--- !u!114 &964986800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964986793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45e3782c820bca41ac849e774f2b230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 71837650}
 --- !u!1 &995361362
 GameObject:
   m_ObjectHideFlags: 0

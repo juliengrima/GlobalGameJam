@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     private List<ColorbyID> playersIDs = new List<ColorbyID>();
 
+    [SerializeField] private AudioClip _countDown;
+
     [System.Serializable]
     public class ColorbyID
     {
@@ -66,25 +68,6 @@ public class UIManager : MonoBehaviour
 
         playersIDs.Add(colorbyID);
     }
-
-    internal void UpdatePlayerInfo(int _id)
-    {
-        PlayerManager.Instance.ResetPlayerPosition();
-        playerInfos[_id].AddScore();
-
-        foreach (var player in playerInfos)
-        {
-            if (player._score == GameManager.Instance.GameInfo.MaxItemCount)
-            {
-                SetWinner(playersIDs[_id].color);
-            }
-        }
-    }
-
-    public void SetWinner(string id)
-    {
-        winText.text = "Player " + id + " win!";
-    }
     #endregion
 
     #region Countdown
@@ -96,6 +79,7 @@ public class UIManager : MonoBehaviour
   
     IEnumerator Countdown()
     {
+        AudioManager.Instance.PlayOneShot(_countDown);
         int countdownTime = GameManager.Instance.GameInfo.CountdownDuration;
 
         while (countdownTime > 0)

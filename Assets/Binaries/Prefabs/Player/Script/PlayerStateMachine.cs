@@ -16,7 +16,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator _animator;
     //[SerializeField] Animation _animation;
     [Header("Player_Audios")]
-    [SerializeField] AudioSource _source;
+    [SerializeField] private AudioClip _powerupEat;
     //Private Fields
     bool _death;
     Vector2 _dir;
@@ -42,14 +42,19 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Eat()
     {
-        UIManager.Instance.UpdatePlayerInfo(_id);
+        AudioManager.Instance.PlayOneShot(_powerupEat);
 
-        // Call UI to remove health
-        var isAlive = true;
-        if (!isAlive)
+
+        //PlayerManager.Instance.ResetPlayerPosition();
+        UIManager.Instance.playerInfos[_id].AddScore();
+
+        foreach (var player in UIManager.Instance.playerInfos)
         {
-
-            GameManager.Instance.EndGame(_id);
+            if (player._score == GameManager.Instance.GameInfo.MaxItemCount)
+            {
+                GameManager.Instance.EndGame(_id);
+                break;
+            }
         }
     }
 
