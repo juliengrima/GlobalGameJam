@@ -27,10 +27,23 @@ public class EventManager : MonoBehaviour
         {
             new EventInfo("Confusion", "All controls are inverted", () => { AreKeysInverted = true; }, () => { AreKeysInverted = false; }),
             new EventInfo("Frenzy Times", "Increase everything speed", () => { TimeMultiplier = 3f; }, () => { TimeMultiplier = 1f; }),
-            new EventInfo("Randomizer", "All positions are randomized", RandomizePos, () => { })
+            new EventInfo("Randomizer", "All positions are randomized", RandomizePos, () => { }),
+            new EventInfo("Blue Shell", "All players when max points get thrown around", BlueShell, () => { })
         };
 
         StartCoroutine(RunEvents());
+    }
+
+    private void BlueShell()
+    {
+        var states = UIManager.Instance.playerInfos;
+        var max = states.Max(x => x._score);
+
+        var players = PlayerManager.Instance.GetAllComponents<PlayerStateMachine>().Where(x => states[x.Id]._score == max);
+        foreach (var p in players)
+        {
+            p.StunAndThrow(Random.insideUnitSphere);
+        }
     }
 
     private void RandomizePos()
