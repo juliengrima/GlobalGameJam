@@ -1323,11 +1323,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScreenTransitionCanvasElement: {fileID: 425314282}
   Title:
-    asset: {fileID: 102900000, guid: d9fc676c4cdec4cdfab803d13e4ac849, type: 3}
-    guid: d9fc676c4cdec4cdfab803d13e4ac849
+    asset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
+    guid: 99c9720ab356a0642a771bea13969a05
   Game:
-    asset: {fileID: 102900000, guid: 78e33eca33ea22340a39c23ef12a925d, type: 3}
-    guid: 78e33eca33ea22340a39c23ef12a925d
+    asset: {fileID: 102900000, guid: 88752f5a8946d4088a12e30509412b39, type: 3}
+    guid: 88752f5a8946d4088a12e30509412b39
   Credits:
     asset: {fileID: 102900000, guid: 45627a939b646d442974f26375a5624f, type: 3}
     guid: 45627a939b646d442974f26375a5624f
