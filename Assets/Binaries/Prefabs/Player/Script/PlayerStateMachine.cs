@@ -28,7 +28,7 @@ public class PlayerStateMachine : MonoBehaviour
     private int _mashCounter;
     private float _currDist, _targetDist = -1f;
 
-    private Vector3 _initialOffset;
+    private Vector3 _initialOffset, _initialGlobalOffset;
 
     private bool _canMove = true;
 
@@ -72,7 +72,8 @@ public class PlayerStateMachine : MonoBehaviour
         {
             var hit01 = _mashCounter / (float)_info.MaxHitCount;
             var distance = _info.DistanceCurve.Evaluate(hit01) * _info.MaxDistance;
-            _initialOffset = _targetBone.position - _mainParent.transform.position;
+            _initialOffset = _targetBone.localPosition;
+            _initialGlobalOffset = _targetBone.position - _mainParent.transform.position;
 
             _head.Force = hit01 * _info.AttackForce;
 
@@ -90,7 +91,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _canMove = false;
             _targetDist = -1f;
-            _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
+            _targetBone.localPosition = _initialOffset;
 
             dir.y = 0f;
             _rb.AddForce(dir.normalized * _info.AttackForce, ForceMode.Impulse);
@@ -105,7 +106,7 @@ public class PlayerStateMachine : MonoBehaviour
     public void ResetHead()
     {
         _targetDist = -1f;
-        _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
+        _targetBone.localPosition = _initialOffset;
         _head.Force = 0f;
     }
 
@@ -120,10 +121,10 @@ public class PlayerStateMachine : MonoBehaviour
                 if (_currDist < _targetDist)
                 {
                     _currDist += Time.deltaTime * _info.HeadSpeed;
-                    _targetBone.transform.position = _mainParent.transform.position + _initialOffset + _mainParent.transform.forward * _currDist * EventManager.Instance.TimeMultiplier;
+                    _targetBone.position = _mainParent.transform.position + _initialGlobalOffset + _mainParent.transform.forward * _currDist * EventManager.Instance.TimeMultiplier;
                     if (_currDist >= _targetDist)
                     {
-                        _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
+                        _targetBone.localPosition = _initialOffset;
                         _head.Force = 0f;
                     }
                 }
