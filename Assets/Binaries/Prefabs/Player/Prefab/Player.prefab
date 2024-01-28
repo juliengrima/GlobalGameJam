@@ -48,6 +48,7 @@ MonoBehaviour:
   _info: {fileID: 11400000, guid: 52815df20664e054c8602ef000200d5d, type: 2}
   _mainParent: {fileID: 5279941806694501375}
   _targetBone: {fileID: 6168374055009799967}
+  _head: {fileID: 4701233851409926486}
   _entityMove: {fileID: 4683729569524586756}
   _animator: {fileID: 0}
   _source: {fileID: 8633556038961674264}

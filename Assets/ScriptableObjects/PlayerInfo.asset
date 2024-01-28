@@ -41,4 +41,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   HeadSpeed: 12
-  AttackForce: 50
+  AttackForce: 100
+  StunTime: 2

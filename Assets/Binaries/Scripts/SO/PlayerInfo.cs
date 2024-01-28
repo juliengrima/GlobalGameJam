@@ -13,4 +13,5 @@ public class PlayerInfo : ScriptableObject
     public AnimationCurve DistanceCurve;
     public float HeadSpeed;
     public float AttackForce;
+    public float StunTime;
 }
