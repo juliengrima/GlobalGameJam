@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _descriptionText;
+    [SerializeField]
+    private TMP_Text _scoreText;
 
     public GameInfo GameInfo => _info;
 
@@ -38,7 +41,12 @@ public class GameManager : MonoBehaviour
     {
         CanPlay = false;
 
-        _descriptionText.text = $"Player {winnerId + 1} win!";
+        var mat = PlayerManager.Instance.GetMatName(winnerId);
+        _descriptionText.text = $"Player {mat} win!";
+
+        var pData = PlayerManager.Instance.GetAllComponents<PlayerStateMachine>();
+
+        _scoreText.text = $"Audience Fun Score: {pData.Sum(x => x.TotalDistance) / pData.Count() / UIManager.Instance.Elapsed * 100f}%\nLess fun player: {PlayerManager.Instance.GetMatName(pData.OrderBy(x => x.TotalDistance).First().Id)}";
         _gameOverPanel.SetActive(true);
     }
 }

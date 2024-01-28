@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     private Transform[] _spawnPoints;
 
     private readonly List<GameObject> _players = new();
+    public IEnumerable<T> GetAllComponents<T>() where T : MonoBehaviour => _players.Select(x => x.GetComponentInChildren<T>());
 
     private bool _isGameReady;
 
@@ -29,6 +29,8 @@ public class PlayerManager : MonoBehaviour
         Assert.AreEqual(_materials.Length, manager.maxPlayerCount, "Material count must match max player count");
 
     }
+
+    public string GetMatName(int index) => _materials[index].name;
 
     public int Register(GameObject player)
     {

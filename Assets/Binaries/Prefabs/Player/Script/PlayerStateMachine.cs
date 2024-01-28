@@ -1,12 +1,15 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerStateMachine : MonoBehaviour
 {
     #region Champs
+    [SerializeField] private Rigidbody _rb;
     [SerializeField] private PlayerInfo _info;
     [SerializeField] private GameObject _mainParent;
     [SerializeField] private Transform _targetBone;
+    [SerializeField] private HeadDetector _head;
     [Header("Player_Actions_Components")]
     [SerializeField] EntityMove _entityMove;
     [Header("Player_Animations")]
@@ -20,11 +23,16 @@ public class PlayerStateMachine : MonoBehaviour
     private bool _isInit;
 
     private int _id;
+    public int Id => _id;
 
     private int _mashCounter;
     private float _currDist, _targetDist = -1f;
 
-    private Vector3 _initialOffset;
+    private Vector3 _initialOffset, _initialGlobalOffset;
+
+    private bool _canMove = true;
+
+    public float TotalDistance { private set; get; }
     #endregion
 
     public void OnItemTrigger(GameObject go)
@@ -64,31 +72,65 @@ public class PlayerStateMachine : MonoBehaviour
         {
             var hit01 = _mashCounter / (float)_info.MaxHitCount;
             var distance = _info.DistanceCurve.Evaluate(hit01) * _info.MaxDistance;
-            _initialOffset = _targetBone.position - _mainParent.transform.position;
+            _initialOffset = _targetBone.localPosition;
+            _initialGlobalOffset = _targetBone.position - _mainParent.transform.position;
+
+            _head.Force = hit01 * _info.AttackForce;
 
             _currDist = 0f;
             _targetDist = distance;
-            // TODO: Throw head here! Use distance to know how far you go
 
             _mashCounter = 0;
         }
+    }
+
+    public void StunAndThrow(Vector3 dir) => StartCoroutine(StunAndThrowCoroutine(dir));
+    private IEnumerator StunAndThrowCoroutine(Vector3 dir)
+    {
+        if (_canMove)
+        {
+            _canMove = false;
+            _targetDist = -1f;
+            _targetBone.localPosition = _initialOffset;
+
+            dir.y = 0f;
+            _rb.AddForce(dir.normalized * _info.AttackForce, ForceMode.Impulse);
+            _head.Force = 0f;
+
+            yield return new WaitForSeconds(2f);
+
+            _canMove = true;
+        }
+    }
+
+    public void ResetHead()
+    {
+        _targetDist = -1f;
+        _targetBone.localPosition = _initialOffset;
+        _head.Force = 0f;
     }
 
     private void Update()
     {
         if (GameManager.Instance.CanPlay)
         {
-            if (_currDist < _targetDist)
-            {
-                _currDist += Time.deltaTime * _info.HeadSpeed;
-                _targetBone.transform.position = _mainParent.transform.position + _initialOffset + _mainParent.transform.forward * _currDist * EventManager.Instance.TimeMultiplier;
-                if (_currDist >= _targetDist)
-                {
-                    _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
-                }
-            }
+            TotalDistance += _rb.velocity.magnitude * Time.deltaTime;
 
-            _entityMove.Moving(_dir);
+            if (_canMove)
+            {
+                if (_currDist < _targetDist)
+                {
+                    _currDist += Time.deltaTime * _info.HeadSpeed;
+                    _targetBone.position = _mainParent.transform.position + _initialGlobalOffset + _mainParent.transform.forward * _currDist * EventManager.Instance.TimeMultiplier;
+                    if (_currDist >= _targetDist)
+                    {
+                        _targetBone.localPosition = _initialOffset;
+                        _head.Force = 0f;
+                    }
+                }
+
+                _entityMove.Moving(_dir);
+            }
         }
     }
 
