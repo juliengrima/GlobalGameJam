@@ -53,6 +53,7 @@ public class PlayerStateMachine : MonoBehaviour
             if (player._score == GameManager.Instance.GameInfo.MaxItemCount)
             {
                 GameManager.Instance.EndGame(_id);
+                _animator.SetTrigger("Win");
                 break;
             }
         }
@@ -94,6 +95,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (_canMove)
         {
+            _animator.SetBool("IsStunned", true);
             _canMove = false;
             _targetDist = -1f;
             _targetBone.localPosition = _initialOffset;
@@ -105,6 +107,7 @@ public class PlayerStateMachine : MonoBehaviour
             yield return new WaitForSeconds(_info.StunTime);
 
             _canMove = true;
+            _animator.SetBool("IsStunned", false);
         }
     }
 
@@ -134,6 +137,8 @@ public class PlayerStateMachine : MonoBehaviour
                     }
                 }
 
+
+                _animator.SetBool("IsWalking", _dir.magnitude != 0f);
                 _entityMove.Moving(_dir);
             }
         }

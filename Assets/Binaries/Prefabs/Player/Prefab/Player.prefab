@@ -50,7 +50,7 @@ MonoBehaviour:
   _targetBone: {fileID: 6168374055009799967}
   _head: {fileID: 4701233851409926486}
   _entityMove: {fileID: 4683729569524586756}
-  _animator: {fileID: 0}
+  _animator: {fileID: 368631072293752527}
   _powerupEat: {fileID: 8300000, guid: 192c6adf5e9658d4987193f154a0af97, type: 3}
 --- !u!1 &5000461983223439856
 GameObject:
