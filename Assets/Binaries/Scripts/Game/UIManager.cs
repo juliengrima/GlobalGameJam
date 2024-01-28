@@ -68,25 +68,6 @@ public class UIManager : MonoBehaviour
 
         playersIDs.Add(colorbyID);
     }
-
-    internal void UpdatePlayerInfo(int _id)
-    {
-        //PlayerManager.Instance.ResetPlayerPosition();
-        playerInfos[_id].AddScore();
-
-        foreach (var player in playerInfos)
-        {
-            if (player._score == GameManager.Instance.GameInfo.MaxItemCount)
-            {
-                SetWinner(playersIDs[_id].color);
-            }
-        }
-    }
-
-    public void SetWinner(string id)
-    {
-        winText.text = "Player " + id + " win!";
-    }
     #endregion
 
     #region Countdown

@@ -43,14 +43,18 @@ public class PlayerStateMachine : MonoBehaviour
     public void Eat()
     {
         AudioManager.Instance.PlayOneShot(_powerupEat);
-        UIManager.Instance.UpdatePlayerInfo(_id);
 
-        // Call UI to remove health
-        var isAlive = true;
-        if (!isAlive)
+
+        //PlayerManager.Instance.ResetPlayerPosition();
+        UIManager.Instance.playerInfos[_id].AddScore();
+
+        foreach (var player in UIManager.Instance.playerInfos)
         {
-
-            GameManager.Instance.EndGame(_id);
+            if (player._score == GameManager.Instance.GameInfo.MaxItemCount)
+            {
+                GameManager.Instance.EndGame(_id);
+                break;
+            }
         }
     }
 
