@@ -82,7 +82,7 @@ public class PlayerStateMachine : MonoBehaviour
             _initialOffset = _targetBone.localPosition;
             _initialGlobalOffset = _targetBone.position - _mainParent.transform.position;
 
-            _head.Force = hit01 * _info.AttackForce;
+            _head.Force = hit01;
 
             _currDist = 0f;
             _targetDist = distance;
@@ -91,8 +91,8 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
-    public void StunAndThrow(Vector3 dir) => StartCoroutine(StunAndThrowCoroutine(dir));
-    private IEnumerator StunAndThrowCoroutine(Vector3 dir)
+    public void StunAndThrow(Vector3 dir, float force) => StartCoroutine(StunAndThrowCoroutine(dir, force));
+    private IEnumerator StunAndThrowCoroutine(Vector3 dir, float force)
     {
         if (_canMove)
         {
@@ -103,7 +103,7 @@ public class PlayerStateMachine : MonoBehaviour
             _targetBone.localPosition = _initialOffset;
 
             dir.y = 0f;
-            _rb.AddForce(dir.normalized * _info.AttackForce, ForceMode.Impulse);
+            _rb.AddForce(dir.normalized * _info.AttackForce * force, ForceMode.Impulse);
             _head.Force = 0f;
 
             yield return new WaitForSeconds(_info.StunTime);

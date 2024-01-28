@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
+    public static ItemSpawner Instance;
+
     public List<GameObject> itemsToSpawn = new List<GameObject>();
     public float spawnDelay = 2f;
     private float bufferDistance = 0.1f;
@@ -13,6 +15,11 @@ public class ItemSpawner : MonoBehaviour
     public bool activateRandomSpawn = false;
     public bool repeatSpawn = false;
     public bool addEvent = false;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -49,9 +56,13 @@ public class ItemSpawner : MonoBehaviour
         _lastItemSpawned = newItem;
     }
 
+    public void DestroyLast()
+    {
+        Destroy(_lastItemSpawned);
+    }
+
     void SpawnItem(Collider collider, List<GameObject> list, int index, float distance)
     {
-        GameObject _lastItemSpawned = null;
 
         if (collider != null)
         {
@@ -66,6 +77,7 @@ public class ItemSpawner : MonoBehaviour
 
             } while (Physics.OverlapSphereNonAlloc(randomPoint, 5f, null, 1 << 6) > 0);
 
+            Destroy(_lastItemSpawned);
             GameObject newItem = Instantiate(list[index], randomPoint, Quaternion.identity);
             
             if (addEvent)

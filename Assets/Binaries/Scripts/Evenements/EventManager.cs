@@ -25,10 +25,11 @@ public class EventManager : MonoBehaviour
 
         Events = new[]
         {
-            new EventInfo("Confusion", "All controls are inverted", () => { AreKeysInverted = true; }, () => { AreKeysInverted = false; }),
-            new EventInfo("Frenzy Times", "Increase everything speed", () => { TimeMultiplier = 3f; }, () => { TimeMultiplier = 1f; }),
-            new EventInfo("Randomizer", "All positions are randomized", RandomizePos, () => { }),
-            new EventInfo("Blue Shell", "All players when max points get thrown around", BlueShell, () => { })
+            //new EventInfo("Confusion", "All controls are inverted", () => { AreKeysInverted = true; }, () => { AreKeysInverted = false; }),
+            //new EventInfo("Frenzy Times", "Increase everything speed", () => { TimeMultiplier = 3f; }, () => { TimeMultiplier = 1f; }),
+            //new EventInfo("Randomizer", "All positions are randomized", RandomizePos, () => { }),
+            //new EventInfo("Come Back Baby", "All players when max points get thrown around", BlueShell, () => { }),
+            new EventInfo("New Target", "Change the objective location", ItemSpawner.Instance.DestroyLast, () => { })
         };
 
         StartCoroutine(RunEvents());
@@ -42,7 +43,7 @@ public class EventManager : MonoBehaviour
         var players = PlayerManager.Instance.GetAllComponents<PlayerStateMachine>().Where(x => states[x.Id]._score == max);
         foreach (var p in players)
         {
-            p.StunAndThrow(Random.insideUnitSphere);
+            p.StunAndThrow(Random.insideUnitSphere, 1f);
         }
     }
 
