@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -22,10 +23,21 @@ public class EventManager : MonoBehaviour
         Events = new[]
         {
             new EventInfo("Confusion", "All controls are inverted", () => { AreKeysInverted = true; }, () => { AreKeysInverted = false; }),
-            new EventInfo("Frenzy Times", "Increase everything speed", () => { TimeMultiplier = 3f; }, () => { TimeMultiplier = 1f; })
+            new EventInfo("Frenzy Times", "Increase everything speed", () => { TimeMultiplier = 3f; }, () => { TimeMultiplier = 1f; }),
+            new EventInfo("Randomizer", "All positions are randomized", RandomizePos, () => { })
         };
 
         StartCoroutine(RunEvents());
+    }
+
+    private void RandomizePos()
+    {
+        var players = PlayerManager.Instance.Players;
+        var pos = players.Select(x => x.transform.position).OrderBy(_ => Random.Range(0f, 1f)).ToArray();
+        for (int i = 0; i < players.Count; i++)
+        {
+            players[i].transform.position = pos[i];
+        }
     }
 
     private IEnumerator RunEvents()
