@@ -4132,37 +4132,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.398
+      value: -9.088355
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.561
+      value: -0.811
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.246288
+      value: -8.600976
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.51363355
+      value: -0.28034845
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18084823
+      value: -0.39851066
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6202666
+      value: 0.7549534
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.56457406
+      value: -0.4389071
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
@@ -4172,7 +4172,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 69.124
+      value: 189.124
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea2db1611940ec48a7e3762aad02e6b,
         type: 3}
