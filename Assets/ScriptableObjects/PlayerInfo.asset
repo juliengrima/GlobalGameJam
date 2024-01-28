@@ -40,6 +40,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  HeadSpeed: 12
+  HeadSpeed: 7.5
   AttackForce: 50
   StunTime: 2
