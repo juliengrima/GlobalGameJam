@@ -27,7 +27,6 @@ public class UIManager : MonoBehaviour
 
     private List<ColorbyID> playersIDs = new List<ColorbyID>();
 
-    [System.Serializable]
     public class ColorbyID
     {
         public int iD;

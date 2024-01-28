@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8366568556495861486}
   - component: {fileID: 5000092726192651374}
   - component: {fileID: -1287538988248710520}
+  - component: {fileID: 6091393778996368593}
   m_Layer: 7
   m_Name: Item_Bonus
   m_TagString: Bonus
@@ -42,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4995320857942950880}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8366568556495861486
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -118,3 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8a0b70f8dacf048b0edf560cff0df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 30
+--- !u!114 &6091393778996368593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4995320857942950880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8a0b70f8dacf048b0edf560cff0df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 30
