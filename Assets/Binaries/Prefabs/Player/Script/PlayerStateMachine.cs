@@ -97,7 +97,7 @@ public class PlayerStateMachine : MonoBehaviour
             _rb.AddForce(dir.normalized * _info.AttackForce, ForceMode.Impulse);
             _head.Force = 0f;
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(_info.StunTime);
 
             _canMove = true;
         }
