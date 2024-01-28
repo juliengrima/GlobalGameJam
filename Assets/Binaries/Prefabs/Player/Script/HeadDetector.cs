@@ -16,8 +16,8 @@ public class HeadDetector : MonoBehaviour
         }
         else if (other.CompareTag("Player") && Force > 0f)
         {
-            other.GetComponentInChildren<PlayerStateMachine>().StunAndThrow(other.transform.position - transform.position);
+            //other.GetComponentInChildren<PlayerStateMachine>().StunAndThrow(other.transform.position - transform.position);
         }
-        _player.ResetHead();
+        //_player.ResetHead();
     }
 }

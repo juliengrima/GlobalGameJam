@@ -21,12 +21,11 @@ public class UIManager : MonoBehaviour
     private float timer;
     private bool isTimerActive;
 
-    public float Elapsed => GameManager.Instance.GameInfo.GameDuration - timer;
-
     public UnityEvent onRoundEnd;
 
     private List<ColorbyID> playersIDs = new List<ColorbyID>();
 
+    [System.Serializable]
     public class ColorbyID
     {
         public int iD;

@@ -1,10 +1,10 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { private set; get; }
-    public float TimeMultiplier { get; internal set; }
 
     [SerializeField]
     private GameObject _eventContainer;
@@ -12,7 +12,46 @@ public class EventManager : MonoBehaviour
     [SerializeField]
     private TMP_Text _title, _description;
 
-    public bool AreKeysInverted;
+    public bool AreKeysInverted { private set; get; }
+    public float TimeMultiplier { private set; get; } = 1f;
+
+    private void Awake()
+    {
+        Instance = this;
+
+        Events = new[]
+        {
+            new EventInfo("Confusion", "All controls are inverted", () => { AreKeysInverted = true; }, () => { AreKeysInverted = false; }),
+            new EventInfo("Frenzy Times", "Increase everything speed", () => { TimeMultiplier = 3f; }, () => { TimeMultiplier = 1f; })
+        };
+
+        StartCoroutine(RunEvents());
+    }
+
+    private IEnumerator RunEvents()
+    {
+        while (true)
+        {
+            if (GameManager.Instance.CanPlay)
+            {
+                yield return new WaitForSeconds(Random.Range(GameManager.Instance.GameInfo.EventInterval.Min, GameManager.Instance.GameInfo.EventInterval.Max));
+
+                var evt = Events[Random.Range(0, Events.Length)];
+                _eventContainer.SetActive(true);
+                evt.Enable(_title, _description);
+
+                yield return new WaitForSeconds(Random.Range(GameManager.Instance.GameInfo.EventDuration.Min, GameManager.Instance.GameInfo.EventDuration.Max));
+                _eventContainer.SetActive(false);
+                evt.Disable();
+            }
+            else
+            {
+                yield return new WaitForSeconds(1f);
+            }
+        }
+    }
+
+    private EventInfo[] Events;
 }
 
 public class EventInfo
@@ -27,4 +66,13 @@ public class EventInfo
 
     private string _name, _description;
     private System.Action _onEnable, _onDisable;
+
+    public void Enable(TMP_Text title, TMP_Text description)
+    {
+        _onEnable();
+
+        title.text = _name;
+        description.text = _description;
+    }
+    public void Disable() => _onDisable();
 }
