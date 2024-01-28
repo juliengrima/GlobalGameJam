@@ -16,7 +16,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator _animator;
     //[SerializeField] Animation _animation;
     [Header("Player_Audios")]
-    [SerializeField] AudioSource _source;
+    [SerializeField] private AudioClip _powerupEat;
     //Private Fields
     bool _death;
     Vector2 _dir;
@@ -42,6 +42,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Eat()
     {
+        AudioManager.Instance.PlayOneShot(_powerupEat);
         UIManager.Instance.UpdatePlayerInfo(_id);
 
         // Call UI to remove health
