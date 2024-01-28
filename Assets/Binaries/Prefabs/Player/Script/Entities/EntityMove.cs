@@ -104,7 +104,7 @@ public class EntityMove : MonoBehaviour
             float step = _info.RotationSpeed * Time.deltaTime;
 
             _rb.transform.Rotate(0f, moving.x * step * EventManager.Instance.TimeMultiplier, 0f);
-            var dir = moving.y * _info.LinearSpeed * Time.deltaTime * _rb.transform.forward * EventManager.Instance.TimeMultiplier;
+            var dir = moving.y * _info.LinearSpeed * _rb.transform.forward * EventManager.Instance.TimeMultiplier;
 
             _rb.velocity = new Vector3(dir.x, _rb.velocity.y, dir.z);
         }

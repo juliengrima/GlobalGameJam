@@ -7,6 +7,7 @@ public class HeadDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        _player.StunAndThrow(transform.position - other.transform.position);
         if (other.CompareTag("Item"))
         {
             _player.OnItemTrigger(other.gameObject);

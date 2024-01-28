@@ -75,7 +75,6 @@ public class PlayerStateMachine : MonoBehaviour
 
             _currDist = 0f;
             _targetDist = distance;
-            // TODO: Throw head here! Use distance to know how far you go
 
             _mashCounter = 0;
         }
@@ -91,7 +90,6 @@ public class PlayerStateMachine : MonoBehaviour
             _targetBone.transform.position = _mainParent.transform.position + _initialOffset;
 
             dir.y = 0f;
-            Debug.Log(dir.normalized * _info.AttackForce);
             _rb.AddForce(dir.normalized * _info.AttackForce, ForceMode.Impulse);
 
             yield return new WaitForSeconds(2f);
