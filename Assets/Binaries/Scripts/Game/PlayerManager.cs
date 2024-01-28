@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     private Transform[] _spawnPoints;
 
     private readonly List<GameObject> _players = new();
+    public List<GameObject> Players => _players;
     public IEnumerable<T> GetAllComponents<T>() where T : MonoBehaviour => _players.Select(x => x.GetComponentInChildren<T>());
 
     private bool _isGameReady;

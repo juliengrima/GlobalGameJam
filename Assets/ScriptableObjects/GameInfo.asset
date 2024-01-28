@@ -18,9 +18,8 @@ MonoBehaviour:
   MaxNumberRound: 3
   MinPlayerRequirement: 0
   EventInterval:
-    Min: 5
-    Max: 10
+    Min: 10
+    Max: 15
   EventDuration:
     Min: 3
     Max: 5
-  HeadSpeed: 20

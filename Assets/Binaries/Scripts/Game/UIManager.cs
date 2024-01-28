@@ -79,7 +79,7 @@ public class UIManager : MonoBehaviour
   
     IEnumerator Countdown()
     {
-        AudioManager.Instance.PlayOneShot(_countDown);
+        AudioManager.Instance.PlayOneShot(_countDown, 1f);
         int countdownTime = GameManager.Instance.GameInfo.CountdownDuration;
 
         while (countdownTime > 0)

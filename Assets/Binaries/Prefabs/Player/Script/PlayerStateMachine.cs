@@ -17,6 +17,7 @@ public class PlayerStateMachine : MonoBehaviour
     //[SerializeField] Animation _animation;
     [Header("Player_Audios")]
     [SerializeField] private AudioClip _powerupEat;
+    [SerializeField] private AudioClip[] _hits;
     //Private Fields
     bool _death;
     Vector2 _dir;
@@ -42,7 +43,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Eat()
     {
-        AudioManager.Instance.PlayOneShot(_powerupEat);
+        AudioManager.Instance.PlayOneShot(_powerupEat, .4f);
 
 
         //PlayerManager.Instance.ResetPlayerPosition();
@@ -53,6 +54,7 @@ public class PlayerStateMachine : MonoBehaviour
             if (player._score == GameManager.Instance.GameInfo.MaxItemCount)
             {
                 GameManager.Instance.EndGame(_id);
+                _animator.SetTrigger("Win");
                 break;
             }
         }
@@ -80,7 +82,7 @@ public class PlayerStateMachine : MonoBehaviour
             _initialOffset = _targetBone.localPosition;
             _initialGlobalOffset = _targetBone.position - _mainParent.transform.position;
 
-            _head.Force = hit01 * _info.AttackForce;
+            _head.Force = hit01;
 
             _currDist = 0f;
             _targetDist = distance;
@@ -89,22 +91,25 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
-    public void StunAndThrow(Vector3 dir) => StartCoroutine(StunAndThrowCoroutine(dir));
-    private IEnumerator StunAndThrowCoroutine(Vector3 dir)
+    public void StunAndThrow(Vector3 dir, float force) => StartCoroutine(StunAndThrowCoroutine(dir, force));
+    private IEnumerator StunAndThrowCoroutine(Vector3 dir, float force)
     {
         if (_canMove)
         {
+            AudioManager.Instance.PlayOneShot(_hits[Random.Range(0, _hits.Length)], 1f);
+            _animator.SetBool("IsStunned", true);
             _canMove = false;
             _targetDist = -1f;
             _targetBone.localPosition = _initialOffset;
 
             dir.y = 0f;
-            _rb.AddForce(dir.normalized * _info.AttackForce, ForceMode.Impulse);
+            _rb.AddForce(dir.normalized * _info.AttackForce * force, ForceMode.Impulse);
             _head.Force = 0f;
 
             yield return new WaitForSeconds(_info.StunTime);
 
             _canMove = true;
+            _animator.SetBool("IsStunned", false);
         }
     }
 
@@ -134,6 +139,8 @@ public class PlayerStateMachine : MonoBehaviour
                     }
                 }
 
+
+                _animator.SetBool("IsWalking", _dir.magnitude != 0f);
                 _entityMove.Moving(_dir);
             }
         }
